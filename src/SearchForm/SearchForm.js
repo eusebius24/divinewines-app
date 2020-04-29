@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import '../App/App.css';
 
 class SearchForm extends React.Component {
+    handleGoBack() {
+        const history = createBrowserHistory();
+        history.push('/home');
+    }
     render() {
         return (
             <main role="main">
@@ -14,17 +19,17 @@ class SearchForm extends React.Component {
                 <p className="directions">Enter as few or as many details as you like.</p>
                 <form id="signup-form">
                     <div className="form-section">
-                        <label for="name">Wine Name</label>
+                        <label htmlFor="name">Wine Name</label>
                         <input type="text" id="name" placeholder="Name of wine" />
                     </div>
 
                     <div className="form-section">
-                        <label for="vintner">Vintner</label>
+                        <label htmlFor="vintner">Vintner</label>
                         <input type="text" id="vintner" placeholder="Vintner" />
                     </div>
     
                     <div className="form-section">
-                        <label for="varietal">Varietal</label>
+                        <label htmlFor="varietal">Varietal</label>
                         <select name="varietal" id="varietal">
                             <option value="">--Please choose an option--</option>
                             <option value="Chardonnay">Chardonnay</option>
@@ -42,12 +47,12 @@ class SearchForm extends React.Component {
                     </div>
 
                     <div className="form-section">
-                        <label for="year">Year</label>
+                        <label htmlFor="year">Year</label>
                         <input type="text" id="year" placeholder="Year" />
                     </div>
     
                     <div className="form-section">
-                        <label for="region">Region</label>
+                        <label htmlFor="region">Region</label>
                         <select name="region" id="region">
                             <option value="">--Please choose an option--</option>
                             <option value="Australia">Australia</option>
@@ -64,18 +69,18 @@ class SearchForm extends React.Component {
                     </div>
     
                     <div className="form-section textarea">
-                        <label for="notes">Tasting Notes</label>
+                        <label htmlFor="notes">Tasting Notes</label>
                         <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
                     </div>
                     <div className="form-section">
                         <label htmlFor='rating'>Rating</label>
-                        <input type='number' name='rating' id='rating' min='1' max='5' required />
+                        <input type='number' name='rating' id='rating' min='1' max='5' />
                     </div>
                     <div className="form-section">
                         <Link to="/search-results">
                             <button>Search</button>
                         </Link>
-                        <button type="reset">Cancel</button>
+                        <button onClick={this.handleGoBack}>Cancel</button>
                     </div>
                     
                 </form>

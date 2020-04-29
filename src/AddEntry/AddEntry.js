@@ -75,7 +75,7 @@ class AddEntry extends React.Component {
                 </div>
                 <div className="form-section rating">
                     <label htmlFor='rating'>Rating</label>
-                    <input type='number' name='rating' id='rating' defaultValue='1' min='1' max='5' required />
+                    <input type='number' name='rating' id='rating' defaultValue='1' min='1' max='5' />
                 </div>
                 <div className="form-section">
                     <Link to="/home">

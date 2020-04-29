@@ -73,8 +73,7 @@ class EditEntry extends React.Component {
                     </div>
                     <div className="form-section">
                         <label htmlFor='rating'>Rating</label>
-                        <input type='number' name='rating' id='rating' placeholder='3' defaultValue='3' min='1' max='5'
-                            required />
+                        <input type='number' name='rating' id='rating' placeholder='3' defaultValue='3' min='1' max='5' />
                     </div>
                     <div className="form-section">
                         <Link to="/home">

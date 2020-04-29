@@ -13,7 +13,8 @@
   
   .nav,
   footer {
-    padding: 1% 0;
+    padding: 5%;
+    padding-bottom: 8%;
     background-color: #aaa;
   }
   
@@ -25,20 +26,23 @@
     z-index: 10;
     display: flex;
     margin-top: -5px;
-    
+    height: 20px;
     justify-content: center;
   }
   
   .nav ul {
       display: flex;
       flex-direction: row;
+      justify-content: space-evenly;
+      
       
      
   }
   .nav li {
       
       padding-right: 10px;
-      font-size: 1rem;      
+   
+      font-size: 0.8rem;      
       text-decoration: none;
       color: #fff;
       font-weight: bold;
@@ -46,18 +50,19 @@
 
   .nav a {
     text-decoration: none;
+    color: #fff;
   }
 
   .nav a:visited {
     color: #fff;
   }
   main {
-    padding: 5% 2%;
+    padding: 2% 2%;
     
   }
 
   header {
-    margin-top: -25px;
+    margin-top: -5px;
   }
   
   h3  {
@@ -65,8 +70,9 @@
   }
   section {
     min-height: 200px;
-    padding: 10% 0;
+    padding: 0% 10%;
     background-color: #bbb;
+    
   }
   
   section:nth-child(even) {
@@ -90,7 +96,7 @@
   
   .form-section {
       padding: 15px;
-      margin-left: 30px;
+      /* margin-left: 20px; */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -130,9 +136,13 @@
   }
 
   .search-result {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
    
+  }
+
+  .search-result ul {
+    margin-left: -30px;
   }
 
   @media screen and (min-width: 700px) {
