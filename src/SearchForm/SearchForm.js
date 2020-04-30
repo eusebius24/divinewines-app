@@ -15,7 +15,7 @@ class SearchForm extends React.Component {
                 <h1>Search Journal</h1>
             </header>
     
-            <section>
+            <section class="form-container">
                 <p className="directions">Enter as few or as many details as you like.</p>
                 <form id="signup-form">
                     <div className="form-section">

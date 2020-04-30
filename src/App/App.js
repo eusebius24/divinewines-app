@@ -9,26 +9,52 @@ import EditEntry from '../EditEntry/EditEntry.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import NotFound from '../NotFound/NotFound.js';
+import wineStore from '../store';
+import DivineWinesContext from '../context/DivineWinesContext';
 
-function App() {
-  return (
-    <main className='App'>
-      <NavBar />
-      
-      <BrowserRouter>
-                 <Switch>
-                    <Route exact path = '/'
-                    component={Landing} />
-                    <Route path = '/home' component={Home} />
-                    <Route path = '/add-entry' component={AddEntry} />
-                    <Route path="/edit-entry" component={EditEntry} />
-                    <Route path = '/search-form' component={SearchForm} />
-                    <Route path = "/search-results" component={SearchResults} />
-                    <Route component={NotFound} />
-                 </Switch>
-            </BrowserRouter>
-    </main>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      store: wineStore
+    }
+    this.addRecord = this.addRecord.bind(this);
+  }
+
+  addRecord = record => {
+    this.setState({
+      store: [ ...this.state.store, record ],
+    })
+
+    
+  }
+  render() {
+    const contextValue = {
+      addRecord: this.addRecord,
+    }
+    return (
+      <main className='App'>
+        <NavBar />
+        <DivineWinesContext.Provider value={contextValue}>
+
+        
+          <BrowserRouter>
+                   <Switch>
+                      <Route exact path = '/'
+                      component={Landing} />
+                      <Route path = '/home' render={(props) => <Home store={this.state.store} {...props} />} />
+                      <Route path = '/add-entry' render={(props) => <AddEntry addRecord={() => this.addRecord} {...props} /> } />
+                      <Route path="/edit-entry" component={EditEntry} />
+                      <Route path = '/search-form' component={SearchForm} />
+                      <Route path = "/search-results" component={SearchResults} />
+                      <Route component={NotFound} />
+                   </Switch>
+              </BrowserRouter>
+        </DivineWinesContext.Provider>
+      </main>
+    );
+  }
+ 
 }
 
 export default App;

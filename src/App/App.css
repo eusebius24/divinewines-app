@@ -62,7 +62,7 @@
   }
 
   header {
-    margin-top: -5px;
+    margin-top: 20px;
   }
   
   h3  {
@@ -91,6 +91,11 @@
   form {
     text-align: left;
     padding-right: 20px;
+    padding-top: 20px;
+  }
+
+  .form-container {
+    padding-top: 20px;
   }
 
   
@@ -145,6 +150,26 @@
     margin-left: -30px;
   }
 
+  .landing-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 500px) {
+    .nav {
+      height: 50px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+ .nav ul {
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+  }
+
   @media screen and (min-width: 700px) {
 
     .nav {
@@ -154,12 +179,13 @@
     }
     .nav li {
       justify-content: left;
+
     }
   }
 
   @media screen and (min-width: 800px) {
-    nav li {
-      font-size: 1.5em;
+    .nav li {
+      font-size: 1.2rem;
     }
 
     h3 {

@@ -1,9 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App/App.css';
+import IndivRecord from '../IndivRecord/IndivRecord.js';
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            recordsList: []
+        }
+    }
+   
     render() {
+        const records = this.props.store;
+        console.log("records: ", records);
+      
+            const recordsList = records.map 
+            (record => {
+                return (
+                    <IndivRecord record={record} key={record.id} name={record.name} year={record.year} vintner={record.vintner} region={record.region} varietal={record.varietal} rating={record.rating} />
+                )
+            })
+           
+        console.log("recordsList: ", recordsList);
+       
+        
         return (
         <main role="main">
             <header role="banner">
@@ -11,59 +32,10 @@ class Home extends React.Component {
             </header>
 
             <section>
-                <div className="search-result">
-                    <h3>Veramonte Organic Riserva Carmen&egrave;re</h3>
-                    <ul>
-                        <li>Year: 2018</li>
-                        <li>Vintner: Veramonte</li>
-                        <li>Region: Chile</li>
-                        <li>Varietal: Carmen&egrave;re</li>
-                        <li>Rating: 3 stars</li>
-                    </ul>
-                    <div className="form-section">
-                        <Link to="/edit-entry">
-                            <button>Edit item</button>
-                        </Link>
-                        <button>Delete item</button>
-                    </div>
-                    
-                    <hr />
-                </div>
-                <div className="search-result">
-                    <h3>Collier Creek Cabernet Sauvignon</h3>
-                    <ul>
-                        <li>Year: 2016</li>
-                        <li>Vintner: Peltier</li>
-                        <li>Region: California</li>
-                        <li>Varietal: Cabernet Sauvignon</li>
-                        <li>Tasting notes: Dry but full bodied and smooth with a hint of blackberry</li>
-                        <li>Rating: 4 stars</li>
-
-                    </ul>
-                    <div className="form-section">
-                        <Link to="/edit-entry">
-                            <button>Edit item</button>
-                        </Link>
-                        <button>Delete item</button>
-                    </div>
-                    <hr />
-                </div>
-                <div className="search-result">
-                    <h3>Ch&acirc;teau Le Grand Moulin Collection Grande R&eacute;serve</h3>
-                    <ul>
-                        <li>Year: 2016</li>
-                        <li>Vintner: Sarl Robin</li>
-                        <li>Region: Bordeaux</li>
-                        <li>Varietal: Cabernet Sauvignon/Merlot/Cabernet Franc</li>
-                        <li>Rating: 5 stars</li>
-                    </ul>
-                    <div className="form-section">
-                        <Link to="/edit-entry">
-                            <button>Edit item</button>
-                        </Link>
-                        <button>Delete item</button>
-                    </div>
-                    <hr />
+                {(!records) ? "loading..." :
+                recordsList
+                }
+               
                     <div className="form-section">
                         <Link to="/add-entry">
                             <button>Add Journal Entry</button>
@@ -74,7 +46,7 @@ class Home extends React.Component {
                    
                     </div>
                    
-                </div>
+                
             </section>
 
 

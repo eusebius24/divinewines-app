@@ -12,21 +12,21 @@ class Landing extends React.Component {
             <h2>Easy-to-use journal software for the wine enthusiast</h2>
         </header>
 
-        <section>
+        <section className="landing-section">
             <h2>Customizable journal format</h2>
             <p>Allows you to keep track of wine qualities that matter to you the most</p>
         </section>
 
-        <section>
+        <section className="landing-section">
             <h2>Preserve your impressions of wines you've tasted</h2>
             <p>Keep tasting notes, records of vintners, varietals and years, and star ratings</p>
         </section>
 
-        <section>
+        <section className="landing-section">
             <h2>Search wines by year, varietal, region and more!</h2>
             <p>Receive a custom list of wines that meets your criteria!</p>
         </section>
-        <section>
+        <section className="landing-section">
             <h2>Sign up now!</h2>
 
             <Link to="/home">
