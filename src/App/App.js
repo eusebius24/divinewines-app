@@ -28,6 +28,8 @@ class App extends React.Component {
     this.setState({
       store: store
     })
+    console.log("store in addRecord: ", store);
+
   }
 
   render() {

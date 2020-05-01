@@ -2,20 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App/App.css';
 import IndivRecord from '../IndivRecord/IndivRecord.js';
+import DivineWinesContext from '../context/DivineWinesContext';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            records: [],
             recordsList: []
         }
     }
-   
+   static contextType = DivineWinesContext;
+   componentDidMount() {
+      this.setState({
+          records: this.context.store
+      })
+      console.log("records:", this.state.records);
+   }
     render() {
-        const records = this.props.store;
-        console.log("records: ", records);
-      
-            const recordsList = records.map 
+        
+        console.log("records: ", this.state.records);
+            const recordsList = this.state.records && this.state.records.map 
             (record => {
                 return (
                     <IndivRecord record={record} key={record.id} name={record.name} year={record.year} vintner={record.vintner} region={record.region} varietal={record.varietal} rating={record.rating} />
@@ -32,7 +39,7 @@ class Home extends React.Component {
             </header>
 
             <section>
-                {(!records) ? "loading..." :
+                {(!this.state.records) ? "loading..." :
                 recordsList
                 }
                

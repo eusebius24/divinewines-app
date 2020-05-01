@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import wineStore from '../store.js';
 
 const DivineWinesContext = React.createContext({
     addRecord: () => {},
+    store: wineStore,
 })
 
-export const useAppContext = () => {
-    useContext(DivineWinesContext)
-}
+
 
 export default DivineWinesContext;
