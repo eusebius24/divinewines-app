@@ -17,7 +17,7 @@ class Home extends React.Component {
       this.setState({
           records: this.context.store
       })
-      console.log("records:", this.state.records);
+      console.log("records:", this.context.store);
    }
     render() {
         
@@ -42,7 +42,6 @@ class Home extends React.Component {
                 {(!this.state.records) ? "loading..." :
                 recordsList
                 }
-               
                     <div className="form-section">
                         <Link to="/add-entry">
                             <button>Add Journal Entry</button>

@@ -15,19 +15,15 @@ import DivineWinesContext from '../context/DivineWinesContext';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      store: wineStore
-    }
+    
     this.addRecord = this.addRecord.bind(this);
   }
 
   addRecord = record => {
-    record.id = this.state.store.length + 1;
-    const store = this.state.store;
+    record.id = this.context.store.length + 1;
+    const store = this.context.store;
     store[record.id] = record;
-    this.setState({
-      store: store
-    })
+    this.context.store = [...this.context.store, record];
     console.log("store in addRecord: ", store);
 
   }
@@ -46,7 +42,7 @@ class App extends React.Component {
                    <Switch>
                       <Route exact path = '/'
                       component={Landing} />
-                      <Route path = '/home' render={(props) => <Home store={this.state.store} {...props} />} />
+                      <Route path = '/home' render={(props) => <Home store={this.context.store} {...props} />} />
                       <Route path = '/add-entry' render={(props) => <AddEntry addRecord={() => this.addRecord} {...props} /> } />
                       <Route path="/edit-entry" component={EditEntry} />
                       <Route path = '/search-form' component={SearchForm} />
