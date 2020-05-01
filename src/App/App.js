@@ -22,12 +22,14 @@ class App extends React.Component {
   }
 
   addRecord = record => {
+    record.id = this.state.store.length + 1;
+    const store = this.state.store;
+    store[record.id] = record;
     this.setState({
-      store: [ ...this.state.store, record ],
+      store: store
     })
-
-    
   }
+
   render() {
     const contextValue = {
       addRecord: this.addRecord,

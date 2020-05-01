@@ -8,10 +8,11 @@ class AddEntry extends React.Component {
     
     static contextType = DivineWinesContext;
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         const history = createBrowserHistory();
         e.preventDefault();
         const { name, year, vintner, region, varietal, notes, rating } = e.target;
+        
         const newRecord = {
             name: name.value,
             vintner: vintner.value,
@@ -24,13 +25,14 @@ class AddEntry extends React.Component {
         console.log("newRecord: ", newRecord);
         
         this.context.addRecord(newRecord);
-        history.push('/home');
+        this.props.history.push('/home');
     }
 
 
-    handleGoBack() {
+    handleGoBack = (e) => {
+        e.preventDefault();
         const history = createBrowserHistory();
-        history.push('/home');
+        this.props.history.push('/home');
     }
 
     
