@@ -1,47 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import '../App/App.css';
-import DivineWinesContext from '../context/DivineWinesContext';
 
 class AddEntry extends React.Component {
     
-    static contextType = DivineWinesContext;
-
-    addRecord = record => {
-        record.id = this.context.store.length + 1;
-        const localStore = this.context.store;
-        console.log(localStore);
-        localStore.push(record);
-        this.context.store = [...localStore];
-      
     
-      }
 
+   
     handleSubmit = (e) => {
-        // const history = createBrowserHistory();
         e.preventDefault();
-        const { name, year, vintner, region, varietal, notes, rating } = e.target;
-        
-        const newRecord = {
-            name: name.value,
-            vintner: vintner.value,
-            varietal: varietal.value,
-            year: year.value,
-            region: region.value,
-            notes: notes.value,
-            rating: rating.value,
-        }
-        console.log("newRecord: ", newRecord);
-        
-        this.addRecord(newRecord);
         this.props.history.push('/home');
     }
 
 
     handleGoBack = (e) => {
         e.preventDefault();
-        const history = createBrowserHistory();
         this.props.history.push('/home');
     }
 
