@@ -8,8 +8,18 @@ class AddEntry extends React.Component {
     
     static contextType = DivineWinesContext;
 
+    addRecord = record => {
+        record.id = this.context.store.length + 1;
+        const localStore = this.context.store;
+        console.log(localStore);
+        localStore.push(record);
+        this.context.store = [...localStore];
+      
+    
+      }
+
     handleSubmit = (e) => {
-        const history = createBrowserHistory();
+        // const history = createBrowserHistory();
         e.preventDefault();
         const { name, year, vintner, region, varietal, notes, rating } = e.target;
         
@@ -24,7 +34,7 @@ class AddEntry extends React.Component {
         }
         console.log("newRecord: ", newRecord);
         
-        this.context.addRecord(newRecord);
+        this.addRecord(newRecord);
         this.props.history.push('/home');
     }
 

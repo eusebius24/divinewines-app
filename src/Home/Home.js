@@ -5,14 +5,17 @@ import IndivRecord from '../IndivRecord/IndivRecord.js';
 import DivineWinesContext from '../context/DivineWinesContext';
 
 class Home extends React.Component {
+    static contextType = DivineWinesContext;
+   
     constructor(props) {
         super(props);
         this.state = {
             records: [],
             recordsList: []
         }
+        // console.log("contextType: ", contextType);
     }
-   static contextType = DivineWinesContext;
+  
    componentDidMount() {
       this.setState({
           records: this.context.store
@@ -21,7 +24,7 @@ class Home extends React.Component {
    }
     render() {
         
-        console.log("records: ", this.state.records);
+        // console.log("records: ", this.state.records);
             const recordsList = this.state.records && this.state.records.map 
             (record => {
                 return (

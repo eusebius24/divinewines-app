@@ -9,29 +9,28 @@ import EditEntry from '../EditEntry/EditEntry.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import NotFound from '../NotFound/NotFound.js';
-import wineStore from '../store';
+import wineStore from '../store.js';
 import DivineWinesContext from '../context/DivineWinesContext';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      store: []
+    }
     
-    this.addRecord = this.addRecord.bind(this);
   }
 
-  addRecord = record => {
-    record.id = this.context.store.length + 1;
-    const store = this.context.store;
-    store[record.id] = record;
-    this.context.store = [...this.context.store, record];
-    console.log("store in addRecord: ", store);
+  
 
-  }
+ 
 
   render() {
     const contextValue = {
-      addRecord: this.addRecord,
+     
+      store: wineStore
     }
+   
     return (
       <main className='App'>
         <NavBar />
