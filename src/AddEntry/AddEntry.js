@@ -2,14 +2,50 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import '../App/App.css';
+import DivineWinesContext from '../context/DivineWinesContext';
 
 class AddEntry extends React.Component {
+    
+    static contextType = DivineWinesContext;
 
-    handleGoBack() {
-        const history = createBrowserHistory();
-        history.push('/home');
+    addRecord = record => {
+        record.id = this.context.store.length + 1;
+        const localStore = this.context.store;
+        console.log(localStore);
+        localStore.push(record);
+        this.context.store = [...localStore];
+      
+    
+      }
+
+    handleSubmit = (e) => {
+        // const history = createBrowserHistory();
+        e.preventDefault();
+        const { name, year, vintner, region, varietal, notes, rating } = e.target;
+        
+        const newRecord = {
+            name: name.value,
+            vintner: vintner.value,
+            varietal: varietal.value,
+            year: year.value,
+            region: region.value,
+            notes: notes.value,
+            rating: rating.value,
+        }
+        console.log("newRecord: ", newRecord);
+        
+        this.addRecord(newRecord);
+        this.props.history.push('/home');
     }
 
+
+    handleGoBack = (e) => {
+        e.preventDefault();
+        const history = createBrowserHistory();
+        this.props.history.push('/home');
+    }
+
+    
     render() {
         return(
             <main role="main">
@@ -19,19 +55,19 @@ class AddEntry extends React.Component {
 
         <section>
 
-            <form id="add-form">
+            <form id="add-form" onSubmit={this.handleSubmit}>
                 <div className="form-section">
-                    <label for="name">Wine Name</label>
+                    <label htmlFor="name">Wine Name</label>
                     <input type="text" id="name" placeholder="Name of wine" />
                 </div>
 
                 <div className="form-section">
-                    <label for="vintner">Vintner</label>
+                    <label htmlFor="vintner">Vintner</label>
                     <input type="text" id="vintner" placeholder="Vintner" />
                 </div>
 
                 <div className="form-section">
-                    <label for="varietal">Varietal</label>
+                    <label htmlFor="varietal">Varietal</label>
                     <select name="varietal" id="varietal">
                         <option value="">--Please choose an option--</option>
                         <option value="Chardonnay">Chardonnay</option>
@@ -48,12 +84,12 @@ class AddEntry extends React.Component {
                     </select>
                 </div>
                 <div className="form-section">
-                    <label for="year">Year</label>
+                    <label htmlFor="year">Year</label>
                     <input type="text" id="year" placeholder="Year" />
                 </div>
 
                 <div className="form-section">
-                    <label for="region">Region</label>
+                    <label htmlFor="region">Region</label>
                     <select name="region" id="region">
                         <option value="">--Please choose an option--</option>
                         <option value="Australia">Australia</option>
@@ -70,17 +106,17 @@ class AddEntry extends React.Component {
                 </div>
 
                 <div className="form-section textarea">
-                    <label for="notes">Tasting Notes</label>
+                    <label htmlFor="notes">Tasting Notes</label>
                     <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
                 </div>
                 <div className="form-section rating">
                     <label htmlFor='rating'>Rating</label>
-                    <input type='number' name='rating' id='rating' defaultValue='1' min='1' max='5' />
+                    <input type='number' name='rating' id='rating' defaultValue='1' min='1' max='5' required />
                 </div>
                 <div className="form-section">
-                    <Link to="/home">
-                        <button>Submit</button>
-                    </Link>
+                   
+                    <button>Submit</button>
+                   
                     <button onClick={this.handleGoBack}>Cancel</button>
                 </div>
                 

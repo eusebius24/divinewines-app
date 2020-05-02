@@ -13,8 +13,7 @@
   
   .nav,
   footer {
-    padding: 5%;
-    padding-bottom: 8%;
+    padding: 1% 0;
     background-color: #aaa;
   }
   
@@ -26,23 +25,20 @@
     z-index: 10;
     display: flex;
     margin-top: -5px;
-    height: 20px;
+    
     justify-content: center;
   }
   
   .nav ul {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
-      
       
      
   }
   .nav li {
       
       padding-right: 10px;
-   
-      font-size: 0.8rem;      
+      font-size: 1rem;      
       text-decoration: none;
       color: #fff;
       font-weight: bold;
@@ -50,19 +46,22 @@
 
   .nav a {
     text-decoration: none;
-    color: #fff;
   }
 
   .nav a:visited {
     color: #fff;
   }
   main {
-    padding: 2% 2%;
+    padding: 5% 2%;
     
   }
 
   header {
-    margin-top: -5px;
+<<<<<<< HEAD
+    margin-top: 20px;
+=======
+    margin-top: -25px;
+>>>>>>> parent of cc35109... styling on static version
   }
   
   h3  {
@@ -70,9 +69,8 @@
   }
   section {
     min-height: 200px;
-    padding: 0% 10%;
+    padding: 10% 0;
     background-color: #bbb;
-    
   }
   
   section:nth-child(even) {
@@ -91,12 +89,17 @@
   form {
     text-align: left;
     padding-right: 20px;
+    padding-top: 20px;
+  }
+
+  .form-container {
+    padding-top: 20px;
   }
 
   
   .form-section {
       padding: 15px;
-      /* margin-left: 20px; */
+      margin-left: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -136,15 +139,38 @@
   }
 
   .search-result {
-    padding: 10px;
+    padding: 20px;
     text-align: center;
    
   }
 
+<<<<<<< HEAD
   .search-result ul {
     margin-left: -30px;
   }
 
+  .landing-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 500px) {
+    .nav {
+      height: 50px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+ .nav ul {
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+  }
+
+=======
+>>>>>>> parent of cc35109... styling on static version
   @media screen and (min-width: 700px) {
 
     .nav {
@@ -154,12 +180,13 @@
     }
     .nav li {
       justify-content: left;
+
     }
   }
 
   @media screen and (min-width: 800px) {
-    nav li {
-      font-size: 1.5em;
+    .nav li {
+      font-size: 1.2rem;
     }
 
     h3 {
