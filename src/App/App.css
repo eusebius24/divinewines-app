@@ -1,199 +1,194 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Open Sans",
-    sans-serif; 
-    font-size: 20px;
-    color: #444;
-    text-align: center;
-    line-height: 1.5;
-  }
-  
-  .nav,
-  footer {
-    padding: 1% 0;
-    background-color: #aaa;
-  }
-  
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    margin-top: -5px;
-    
-    justify-content: center;
-  }
-  
-  .nav ul {
-      display: flex;
-      flex-direction: row;
-      
-     
-  }
-  .nav li {
-      
-      padding-right: 10px;
-      font-size: 1rem;      
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-  }
+  box-sizing: border-box;
+}
 
-  .nav a {
-    text-decoration: none;
-  }
+body {
+  font-family: "Open Sans",
+  sans-serif; 
+  font-size: 20px;
+  color: #444;
+  text-align: center;
+  line-height: 1.5;
+}
 
-  .nav a:visited {
-    color: #fff;
-  }
-  main {
-    padding: 5% 2%;
-    
-  }
+.nav,
+footer {
+  padding: 5%;
+  padding-bottom: 8%;
+  background-color: #aaa;
+}
 
-  header {
-<<<<<<< HEAD
-    margin-top: 20px;
-=======
-    margin-top: -25px;
->>>>>>> parent of cc35109... styling on static version
-  }
-  
-  h3  {
-    margin-left: 20px;
-  }
-  section {
-    min-height: 200px;
-    padding: 10% 0;
-    background-color: #bbb;
-  }
-  
-  section:nth-child(even) {
-    background-color: #ddd;
-  }
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  margin-top: -5px;
+  height: 20px;
+  justify-content: center;
+}
 
-  ul {
-      list-style-type: none;
-  }
-  .directions {
-      width: 60%;
-      margin: 0 auto;
-      padding-bottom: 20px;
-  }
-
-  form {
-    text-align: left;
-    padding-right: 20px;
-    padding-top: 20px;
-  }
-
-  .form-container {
-    padding-top: 20px;
-  }
-
-  
-  .form-section {
-      padding: 15px;
-      margin-left: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  input, textarea {
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .textarea {
+.nav ul {
     display: flex;
     flex-direction: row;
-    align-items: center;
-  }
-
-  .textarea label {
-    display: block;
-  }
-
-  label {
-    margin-right: 5px;
-  }
-
-  button {
-      background-color: #000;
-      color: #fff;
-      padding: 10px;
-      width: 100px;
-      height: 60px;
-      font-size: 0.8rem;
-      margin-right: 2px;
-      cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #bbb;
-  }
-
-  .search-result {
-    padding: 20px;
-    text-align: center;
-   
-  }
-
-<<<<<<< HEAD
-  .search-result ul {
-    margin-left: -30px;
-  }
-
-  .landing-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media screen and (min-width: 500px) {
-    .nav {
-      height: 50px;
-      padding: 5px;
-      display: flex;
-      align-items: center;
-    }
+    justify-content: space-evenly;
     
- .nav ul {
-      margin: 0 auto;
-      margin-top: 40px;
-    }
-  }
-
-=======
->>>>>>> parent of cc35109... styling on static version
-  @media screen and (min-width: 700px) {
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      padding-left: 5%;
-    }
-    .nav li {
-      justify-content: left;
-
-    }
-  }
-
-  @media screen and (min-width: 800px) {
-    .nav li {
-      font-size: 1.2rem;
-    }
-
-    h3 {
-      font-size: 1.5em;
-    }
-  }
+    
    
-  
+}
+.nav li {
+    
+    padding-right: 10px;
+ 
+    font-size: 0.8rem;      
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
 
+.nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav a:visited {
+  color: #fff;
+}
+main {
+  padding: 2% 2%;
   
+}
+
+header {
+  margin-top: 20px;
+}
+
+h3  {
+  margin-left: 20px;
+}
+section {
+  min-height: 200px;
+  padding: 0% 10%;
+  background-color: #bbb;
+  
+}
+
+section:nth-child(even) {
+  background-color: #ddd;
+}
+
+ul {
+    list-style-type: none;
+}
+.directions {
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+form {
+  text-align: left;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.form-container {
+  padding-top: 20px;
+}
+
+
+.form-section {
+    padding: 15px;
+    /* margin-left: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input, textarea {
+  width: 100%;
+  max-width: 500px;
+}
+
+.textarea {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.textarea label {
+  display: block;
+}
+
+label {
+  margin-right: 5px;
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    width: 100px;
+    height: 60px;
+    font-size: 0.8rem;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+  background-color: #bbb;
+}
+
+.search-result {
+  padding: 10px;
+  text-align: center;
+ 
+}
+
+.search-result ul {
+  margin-left: -30px;
+}
+
+.landing-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 500px) {
+  .nav {
+    height: 50px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+.nav ul {
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+  }
+  .nav li {
+    justify-content: left;
+
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav li {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+}
