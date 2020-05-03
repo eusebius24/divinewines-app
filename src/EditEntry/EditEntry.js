@@ -4,6 +4,11 @@ import { createBrowserHistory } from 'history';
 import '../App/App.css';
 
 class EditEntry extends React.Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+    
     handleGoBack() {
         const history = createBrowserHistory();
         history.push('/home');
@@ -54,16 +59,66 @@ class EditEntry extends React.Component {
                         <label for="region">Region</label>
                         <select name="region" id="region">
                             <option value="">--Please choose an option--</option>
-                            <option value="Australia">Australia</option>
-                            <option selected value="Chile">Chile</option>
-                            <option value="France">France</option>
-                            <option value="Italy">Italy</option>
-                            <option value="Niagara">Niagara</option>
-                            <option value="California">California</option>
-                            <option value="Spain">Spain</option>
-                            <option value="Argentina">Argentina</option>
+                        
+                            <optgroup label="South America">
+                                <option value="Argentina">Argentina</option>
+                                <option value="Chile">Chile</option>
+                            </optgroup>
+                            
+                            <optgroup label="France">
+                                <option value="Alsace">Alsace</option>
+                                <option value="Burgundy">Burgundy</option>
+                                <option value="Bordeaux">Bordeaux</option>
+                                <option value="Champagne">Champagne</option>
+                                <option value="Loire">Loire</option>
+                                <option value="Provence">Provence</option>
+                                <option value="Rhone">Rhone</option>
+                            </optgroup>
+                            <option value="Germany">Germany</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Hungary">Hungary</option>
+                            <optgroup label="Italy">
+                                <option value="Apulia">Apulia</option>
+                                <option value="Apulia">Apulia</option>
+                                <option value="Calabria">Calabria</option>
+                                <option value="Emilia-Romagna">Emilia-Romagna</option>
+                                <option value="Liguria">Liguria</option>
+                                <option value="Lombardy">Lombardy</option>
+                                <option value="Marche">Marche</option>
+                                <option value="Piedmont">Piedmont</option>
+                                <option value="Sardinia">Sardinia</option>
+                                <option value="Sicily">Sicily</option>
+                                <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                                <option value="Tuscany">Tuscany</option>
+                                <option value="Umbria">Umbria</option>
+                                <option value="Veneto">Veneto</option>
+                            </optgroup>
+                            <option value="Poland">Poland</option>
                             <option value="Portugal">Portugal</option>
+                            <option value="Spain">Spain</option>
+                        
+                            <optgroup label="Canada">
+                                <option value="Niagara">Niagara</option>
+                                <option value="Okanagan">Okanagan</option>
+                                <option value="Prince Edward County">Prince Edward County</option>
+                            </optgroup>
+                            <optgroup label="United States">
+                                <option value="California">California</option>
+                                <option value="New York">New York</option>
+                                <option value="Oregon">Oregon</option>
+                            </optgroup>
+                            <option value="California">California</option>
+                        
+                            <optgroup label="Australia">
+                                <option value="New South Wales">New South Wales</option>
+                                <option value="Queensland">Queensland</option>
+                                <option value="South Australia">South Australia</option>
+                                <option value="Tasmania">Tasmania</option>
+                                <option value="Victoria">Victorias</option>
+                                <option value="Western Australia">Western Australia</option>
+                            </optgroup>
                             <option value="New Zealand">New Zealand</option>
+                            <option value="South Africa">South Africa</option>
                         </select>
                     </div>
 

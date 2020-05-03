@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import '../App/App.css';
 
 class SearchResults extends React.Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
     render() {
         return (
             <main role="main">
