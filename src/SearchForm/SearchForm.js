@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import '../App/App.css';
 
 class SearchForm extends React.Component {
+    handleGoBack() {
+        const history = createBrowserHistory();
+        history.push('/home');
+    }
     componentDidMount() {
         window.scrollTo(0, 0);
     }
@@ -122,13 +127,13 @@ class SearchForm extends React.Component {
                     </div>
                     <div className="form-section">
                         <label htmlFor='rating'>Rating</label>
-                        <input type='number' name='rating' id='rating' min='1' max='5' required />
+                        <input type='number' name='rating' id='rating' min='1' max='5' />
                     </div>
                     <div className="form-section">
                         <Link to="/search-results">
                             <button>Search</button>
                         </Link>
-                        <button type="reset">Cancel</button>
+                        <button onClick={this.handleGoBack}>Cancel</button>
                     </div>
                     
                 </form>

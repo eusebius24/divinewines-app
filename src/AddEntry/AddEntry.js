@@ -1,23 +1,120 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import '../App/App.css';
+import config from '../config';
+import { Redirect } from 'react-router-dom';
 
 class AddEntry extends React.Component {
-    
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            vintner: '',
+            varietal: '',
+            year: 0,
+            region: '',
+            notes: '',
+            rating: 1
+        }
+    }
     componentDidMount() {
         window.scrollTo(0, 0);
     }
 
+    nameChanged(name) {
+        this.setState({
+            name
+        })
+    }
+
+    vintnerChanged(vintner) {
+        this.setState({
+            vintner
+        })
+    }
+
+    varietalChanged(varietal) {
+        this.setState({
+            varietal
+        })
+    }
+
+    yearChanged(year) {
+        this.setState({
+            year
+        })
+    }
+
+    regionChanged(region) {
+        this.setState({
+            region
+        })
+    }
+
+    notesChanged(notes) {
+        this.setState({
+            notes
+        })
+    }
+
+    ratingChanged(rating) {
+        this.setState({
+            rating
+        })
+    }
    
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.history.push('/home');
+        const history = createBrowserHistory();
+        const{ name, vintner, varietal, year, region, notes, rating } = this.state;
+        console.log('You clicked submit!');
+        const record = { name, vintner, varietal, year, region, notes, rating };
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(record),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        fetch(`${config.API_ENDPOINT}/records`, options)
+            .then(res => {
+                if(!res.ok) {
+                    throw new Error('Something went wrong, please try again later');
+                }
+                return res.json();
+             })
+             .then (data => {
+                 console.log(data);
+                 this.setState({
+                   
+                        name: '',
+                        vintner: '',
+                        varietal: '',
+                        year: '',
+                        region: '',
+                        notes: '',
+                        rating: 1,
+                    
+                 });
+                 this.props.addRecord(record);
+                 this.props.getAllRecords();
+                 this.props.history.push('/home');
+                 
+                 
+             })
+             .catch(err => {
+                 this.setState({
+                     error: err.message
+                 });
+             });
+        
     }
 
 
-    handleGoBack = (e) => {
-        e.preventDefault();
-        this.props.history.push('/home');
+    handleGoBack() {
+        const history = createBrowserHistory();
+        history.push('/home');
     }
 
     
@@ -33,17 +130,17 @@ class AddEntry extends React.Component {
             <form id="add-form" onSubmit={this.handleSubmit}>
                 <div className="form-section">
                     <label htmlFor="name">Wine Name</label>
-                    <input type="text" id="name" placeholder="Name of wine" />
+                    <input type="text" id="name" value={this.state.name} onChange={e => this.nameChanged(e.target.value)} placeholder="Name of wine" />
                 </div>
 
                 <div className="form-section">
                     <label htmlFor="vintner">Vintner</label>
-                    <input type="text" id="vintner" placeholder="Vintner" />
+                    <input type="text" id="vintner" value={this.state.vintner} onChange={e => this.vintnerChanged(e.target.value)}placeholder="Vintner" />
                 </div>
 
                 <div className="form-section">
                     <label htmlFor="varietal">Varietal</label>
-                    <select name="varietal" id="varietal">
+                    <select name="varietal" id="varietal" onChange={e => this.varietalChanged(e.target.value)}>
                         <option value="">--Please choose an option--</option>
                         <option value="Chardonnay">Chardonnay</option>
                         <option value="Sauvignon Blanc">Sauvignon Blanc</option>
@@ -60,12 +157,12 @@ class AddEntry extends React.Component {
                 </div>
                 <div className="form-section">
                     <label htmlFor="year">Year</label>
-                    <input type="text" id="year" placeholder="Year" />
+                    <input type="text" id="year" value={this.state.year} onChange={e => this.yearChanged(e.target.value)} placeholder="Year" />
                 </div>
 
                 <div className="form-section">
                     <label htmlFor="region">Region</label>
-                    <select name="region" id="region">
+                    <select name="region" id="region" onChange={e => this.regionChanged(e.target.value)}>
                         <option value="">--Please choose an option--</option>
                        
                         <optgroup label="South America">
@@ -133,11 +230,11 @@ class AddEntry extends React.Component {
 
                 <div className="form-section textarea">
                     <label htmlFor="notes">Tasting Notes</label>
-                    <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+                    <textarea name="notes" id="notes" value={this.state.notes} onChange={e => this.notesChanged(e.target.value)} cols="30" rows="10"></textarea>
                 </div>
                 <div className="form-section rating">
                     <label htmlFor='rating'>Rating</label>
-                    <input type='number' name='rating' id='rating' defaultValue='1' min='1' max='5' required />
+                    <input type='number' name='rating' id='rating' min='1' max='5' value={this.state.rating} onChange={e => this.ratingChanged(e.target.value)} />
                 </div>
                 <div className="form-section">
                    

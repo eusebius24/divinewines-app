@@ -9,9 +9,27 @@ import EditEntry from '../EditEntry/EditEntry.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import NotFound from '../NotFound/NotFound.js';
+import config from '../config'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      records: []
+    }
+    this.addRecord = this.addRecord.bind(this)
+    
+  }
   
+  
+
+  addRecord(record) {
+    this.setState({
+      records: [...this.state.records, record]
+    })
+  }
+
   render() {
     return (
       <main className='App'>
@@ -20,8 +38,8 @@ class App extends React.Component {
             <Switch>
               <Route exact path = '/'
               component={Landing} />
-              <Route path = '/home' render={(props) => <Home store={this.context.store} {...props} />} />
-              <Route path = '/add-entry' render={(props) => <AddEntry addRecord={() => this.addRecord} {...props} /> } />
+              <Route path = '/home' render={(props) => <Home records={this.state.records} getAllRecords={() => this.getAllRecords} {...props} />} />
+              <Route path = '/add-entry' render={(props) => <AddEntry addRecord={() => this.addRecord} getAllRecords={() => this.getAllRecords} {...props} /> } />
               <Route path="/edit-entry" component={EditEntry} />
               <Route path = '/search-form' component={SearchForm} />
               <Route path = "/search-results" component={SearchResults} />
