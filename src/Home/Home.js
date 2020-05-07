@@ -12,13 +12,11 @@ class Home extends React.Component {
         this.state = {
             records: []
         }
-    this.deleteRecordRequest = this.deleteRecordRequest.bind(this)
-    this.deleteRecord = this.deleteRecord.bind(this)
-    }
-  
-    componentDidMount() {
-        window.scrollTo(0, 0);
-       fetch(`${config.API_ENDPOINT}/records`)
+   this.getAllRecords = this.getAllRecords.bind(this)
+}
+
+    getAllRecords() {
+        fetch(`${config.API_ENDPOINT}/records`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error(res.status)
@@ -31,48 +29,21 @@ class Home extends React.Component {
         })
         console.log("this.state.records: ", this.state.records)
       })
+    }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+        this.getAllRecords();
         
     }
 
-    deleteRecord = (recordID) => {
-        const history = createBrowserHistory();
-        history.push('/home');
-        const newRecords = this.state.records.filter(record => {
-          return record.id !== recordID
-        })
-        this.setState({
-          records: newRecords,
-        })
-        
-      }
-
-    deleteRecordRequest(recordId, callback) {
-        console.log('You clicked delete!');
-        console.log('recordId: ', recordId)
-        fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
-            method: 'DELETE'
-        })
-            .then(res => {
-                if(!res.ok) {
-                    return res.json().then(error => {
-                        throw error
-                    })
-                }
-                return res.json()
-            })
-            .then(data => {
-                callback(recordId)
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
-
+    
+    
+    
     makeRecordsList() {
 
             const recordsList = this.state.records && this.state.records.map(record => {
                 return (
-                    <IndivRecord record={record} key={record.id} deleteRecord={() => this.deleteRecord} deleteRecordRequest={() => this.deleteRecordRequest} />
+                    <IndivRecord record={record} key={record.id} deleteRecord={() => this.deleteRecord} />
                 );
             })
             return recordsList;
