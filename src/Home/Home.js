@@ -30,6 +30,17 @@ class Home extends React.Component {
         console.log("this.state.records: ", this.state.records)
       })
     }
+
+    deleteRecord(recordId) {
+        const history = createBrowserHistory();
+        history.push('/home');
+    const newRecords = this.state.records.filter(record => {
+      return record.id !== recordId
+    })
+    this.setState({
+      records: newRecords,
+    })
+    }
     componentDidMount() {
         window.scrollTo(0, 0);
         this.getAllRecords();
