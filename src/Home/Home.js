@@ -32,58 +32,29 @@ class Home extends React.Component {
       })
     }
 
-    updateItemRequest(updatedRecord, recordId)  {
-        fetch(`${config.API_ENDPOINT}/music/${recordId}`, {
-            method: 'PATCH',
-            body: JSON.stringify(updatedRecord),
-            headers: {
-                'content-type': 'application/json',
-            }
+     //Updates record in state
+     updateRecord = record => {
+        const updatedRecords = this.state.records.map(rec => {
+         if(rec.id === parseInt(record.id)) {
+           rec.name = record.name;
+           rec.vintner = record.vintner;
+           rec.varietal = record.varietal;
+           rec.year = parseInt(record.year);
+           rec.region = record.region;
+           rec.notes = record.notes;
+           rec.rating = parseInt(record.rating);
+         
+          return rec;
+         } else {
+           return rec;
+         }
         })
-        .then(res => {
-            if (!res.ok) {        
-              return res.json().then(error => {
-                  throw error
-              })
-            }
-          return res.json();
-        })
-        .then(
-            this.updateRecord(updatedRecord)
-        )
-        .then(
-          this.getAllRecords()
-        )
-        .catch(error => {
-            this.setState({ error });
+    
+        this.setState({
+          records: updatedRecords
         })
         
-    }   
-  
-  
-  //Updates record in state
-    updateRecord = record => {
-      const updatedRecords = this.state.records.map(rec => {
-       if(rec.id === parseInt(record.id)) {
-         rec.name = record.name;
-         rec.vintner = record.vintner;
-         rec.varietal = record.varietal;
-         rec.year = parseInt(record.year);
-         rec.region = record.region;
-         rec.notes = record.notes;
-         rec.rating = parseInt(record.rating);
-       
-        return rec;
-       } else {
-         return rec;
-       }
-      })
-  
-      this.setState({
-        records: updatedRecords
-      })
-      
-    }
+      }
     
     componentDidMount() {
         
@@ -108,7 +79,7 @@ class Home extends React.Component {
 
     render() {
        const contextValue = {
-        updateItemRequest: this.updateItemRequest,
+        updateRecord: this.updateRecord,
         getAllRecords: this.getAllRecords,
     }
           

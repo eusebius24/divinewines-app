@@ -18,6 +18,36 @@ class EditEntry extends React.Component {
         history.goBack();
     }
 
+    updateItemRequest(updatedRecord, recordId)  {
+        fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
+            method: 'PATCH',
+            body: JSON.stringify(updatedRecord),
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+        .then(res => {
+            if (!res.ok) {        
+              return res.json().then(error => {
+                  throw error
+              })
+            }
+            
+          return res.json();
+        })
+        .then(res =>
+            console.log("res.json: ", res.json())
+        )
+      
+        .catch(error => {
+            this.setState({ error });
+        })
+        
+    }   
+  
+  
+
+
     handleSubmit = (e) => {
         e.preventDefault();
         const { record } = this.props.location.state
@@ -41,9 +71,8 @@ class EditEntry extends React.Component {
             rating: parseInt(rating)
          };
          const recordId = updatedRecord.id;
-         this.context.updateItemRequest(updatedRecord, recordId);
+         this.updateItemRequest(updatedRecord, recordId);
          this.props.history.push('/home');
-            
      }        
 
     componentDidMount() {
