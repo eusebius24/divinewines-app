@@ -9,7 +9,7 @@ import EditEntry from '../EditEntry/EditEntry.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import NotFound from '../NotFound/NotFound.js';
-import config from '../config'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +29,9 @@ class App extends React.Component {
       records: [...this.state.records, record]
     })
   }
+
+ 
+  
 
   render() {
     return (

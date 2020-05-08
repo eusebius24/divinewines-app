@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import '../App/App.css';
 import config from '../config';
-import { Redirect } from 'react-router-dom';
 
 class AddEntry extends React.Component {
     constructor(props) {
@@ -65,7 +64,7 @@ class AddEntry extends React.Component {
    
     handleSubmit = (e) => {
         e.preventDefault();
-        const history = createBrowserHistory();
+    
         const{ name, vintner, varietal, year, region, notes, rating } = this.state;
         console.log('You clicked submit!');
         const record = { name, vintner, varietal, year, region, notes, rating };

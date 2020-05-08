@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import '../App/App.css';
 import config from '../config';
 import IndivRecord from '../IndivRecord/IndivRecord'
-import { createBrowserHistory } from 'history';
+import DivineWinesContext from '../context/DivineWinesContext';
+
 
 
 class Home extends React.Component {
@@ -12,7 +13,7 @@ class Home extends React.Component {
         this.state = {
             records: []
         }
-   this.getAllRecords = this.getAllRecords.bind(this)
+  
 }
 
     getAllRecords() {
@@ -31,17 +32,61 @@ class Home extends React.Component {
       })
     }
 
-    deleteRecord(recordId) {
-        const history = createBrowserHistory();
-        history.push('/home');
-    const newRecords = this.state.records.filter(record => {
-      return record.id !== recordId
-    })
-    this.setState({
-      records: newRecords,
-    })
+    updateItemRequest(updatedRecord, recordId)  {
+        fetch(`${config.API_ENDPOINT}/music/${recordId}`, {
+            method: 'PATCH',
+            body: JSON.stringify(updatedRecord),
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+        .then(res => {
+            if (!res.ok) {        
+              return res.json().then(error => {
+                  throw error
+              })
+            }
+          return res.json();
+        })
+        .then(
+            this.updateRecord(updatedRecord)
+        )
+        .then(
+          this.getAllRecords()
+        )
+        .catch(error => {
+            this.setState({ error });
+        })
+        
+    }   
+  
+  
+  //Updates record in state
+    updateRecord = record => {
+      const updatedRecords = this.state.records.map(rec => {
+       if(rec.id === parseInt(record.id)) {
+         rec.name = record.name;
+         rec.vintner = record.vintner;
+         rec.varietal = record.varietal;
+         rec.year = parseInt(record.year);
+         rec.region = record.region;
+         rec.notes = record.notes;
+         rec.rating = parseInt(record.rating);
+       
+        return rec;
+       } else {
+         return rec;
+       }
+      })
+  
+      this.setState({
+        records: updatedRecords
+      })
+      
     }
+    
     componentDidMount() {
+        
         window.scrollTo(0, 0);
         this.getAllRecords();
         
@@ -54,7 +99,7 @@ class Home extends React.Component {
 
             const recordsList = this.state.records && this.state.records.map(record => {
                 return (
-                    <IndivRecord record={record} key={record.id} deleteRecord={() => this.deleteRecord} />
+                    <IndivRecord record={record} key={record.id} getAllRecords={() => this.getAllRecords} />
                 );
             })
             return recordsList;
@@ -62,8 +107,14 @@ class Home extends React.Component {
     
 
     render() {
-       
+       const contextValue = {
+        updateItemRequest: this.updateItemRequest,
+        getAllRecords: this.getAllRecords,
+    }
+          
+           
         return (
+        <DivineWinesContext.Provider value={contextValue}>
         <main role="main">
             <header role="banner">
                 <h1>Divine Wines - Your Journal Entries</h1>
@@ -89,6 +140,7 @@ class Home extends React.Component {
 
 
         </main>
+        </DivineWinesContext.Provider>
         );
     }
 }

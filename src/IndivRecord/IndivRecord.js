@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import config from '../config'
-import { createBrowserHistory } from 'history';
+
 
 class IndivRecord extends React.Component {
    
 
-    deleteRecordRequest(recordId, callback) {
+    deleteRecordRequest(recordId) {
         console.log('You clicked delete!');
        
         console.log('recordId: ', recordId)
@@ -20,11 +20,9 @@ class IndivRecord extends React.Component {
                         throw error
                     })
                 }
-                return res.json()
             })
-            .then(data => {
-                callback(recordId)
-            })
+
+            .then(this.props.getAllRecords())
             
             .catch(error => {
                 console.error(error)
@@ -45,7 +43,7 @@ class IndivRecord extends React.Component {
                 <li>Rating: {this.props.record.rating} stars</li>
             </ul>
             <div className="form-section">
-                <Link to="/edit-entry">
+                <Link to={{pathname: `/edit-entry`, state: {record: this.props.record}}}>
                     <button>Edit item</button>
                 </Link>
                 <button onClick={() => this.deleteRecordRequest(this.props.record.id, this.props.deleteRecord)}>Delete item</button>
