@@ -1,0 +1,17 @@
+h3 {
+    font-family: Voltaire;
+    color: #bf452a;
+}
+
+.result-heading {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.buttons {
+    display: flex;
+    width: 60px;
+    margin: 0 auto;
+    align-items: center;
+}
+

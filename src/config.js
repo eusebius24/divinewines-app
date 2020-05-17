@@ -1,4 +1,4 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8000/api',
+    API_ENDPOINT: 'https://safe-escarpment-69594.herokuapp.com/api',
     PORT: process.env.PORT || 8000,
 }

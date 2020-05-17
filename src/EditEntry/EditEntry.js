@@ -9,7 +9,13 @@ class EditEntry extends React.Component {
         super(props);
        this.state = {
         error: null,
-        records: []
+        name: '',
+        vintner: '',
+        varietal: '',
+        year: '',
+        region: '',
+        tasting_notes: '',
+        rating: '',
         }
     }
     static contextType = DivineWinesContext;
@@ -18,61 +24,45 @@ class EditEntry extends React.Component {
         history.goBack();
     }
 
-    updateItemRequest(updatedRecord, recordId)  {
-        fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
-            method: 'PATCH',
-            body: JSON.stringify(updatedRecord),
-            headers: {
-                'content-type': 'application/json',
-            }
-        })
-        .then(res => {
-            if (!res.ok) {        
-              return res.json().then(error => {
-                  throw error
-              })
-            }
-            
-          return res.json();
-        })
-        .then(res =>
-            console.log("res.json: ", res.json())
-        )
-      
-        .catch(error => {
-            this.setState({ error });
-        })
-        
-    }   
   
   
+    handleInputChange = (ev) => {
+        this.setState({
+            [ev.target.name]: ev.target.value
+        })
+    }
 
 
     handleSubmit = (e) => {
         e.preventDefault();
         const { record } = this.props.location.state
+        const history = createBrowserHistory();
        
-        const name = document.getElementById("name").value;
-        const vintner = document.getElementById("vintner").value;
-        const varietal = document.getElementById("varietal").value;
-        const year = document.getElementById("year").value;
-        const region = document.getElementById("region").value;
-        const notes = document.getElementById("notes").value;
-        const rating = document.getElementById("rating").value;
         console.log('You clicked submit!');
         const updatedRecord = { 
             id: record.id,
-            name: name,
-            vintner: vintner,
-            varietal: varietal,
-            year: parseInt(year),
-            region: region,
-            notes: notes,
-            rating: parseInt(rating)
+            name: this.state.name,
+            vintner: this.state.vintner,
+            varietal: this.state.varietal,
+            year: parseInt(this.state.year),
+            region: this.state.region,
+            tasting_notes: this.state.tasting_notes,
+            rating: parseInt(this.state.rating)
          };
          const recordId = updatedRecord.id;
-         this.updateItemRequest(updatedRecord, recordId);
-         this.props.history.push('/home');
+         this.context.updateItemRequest(updatedRecord, recordId);
+         this.setState({
+            error: null,
+            name: '',
+            vintner: '',
+            varietal: '',
+            year: '',
+            region: '',
+            tasting_notes: '',
+            rating: '',
+         })
+         this.props.history.push('/home')
+         
      }        
 
     componentDidMount() {
@@ -94,10 +84,10 @@ class EditEntry extends React.Component {
                 varietal: record.varietal,
                 year: record.year,
                 region: record.region,
-                notes: record.tasting_notes,
+                tasting_notes: record.tasting_notes,
                 rating: record.rating
              })
-             console.log(this.state.name);
+             console.log("this.state.tasting_notes:", this.state.tasting_notes);
          })
          .catch(err => {
             this.setState({
@@ -107,47 +97,6 @@ class EditEntry extends React.Component {
        
     }
 
-    nameChanged(name) {
-        this.setState({
-            name
-        })
-    }
-
-    vintnerChanged(vintner) {
-        this.setState({
-            vintner
-        })
-    }
-
-    varietalChanged(varietal) {
-        this.setState({
-            varietal
-        })
-    }
-
-    yearChanged(year) {
-        this.setState({
-            year
-        })
-    }
-
-    regionChanged(region) {
-        this.setState({
-            region
-        })
-    }
-
-    notesChanged(notes) {
-        this.setState({
-            notes
-        })
-    }
-
-    ratingChanged(rating) {
-        this.setState({
-            rating
-        })
-    }
 
    
 
@@ -163,17 +112,17 @@ class EditEntry extends React.Component {
                 <form id="edit-form" onSubmit={this.handleSubmit}>
                     <div className="form-section">
                         <label htmlFor="name">Wine Name</label>
-                        <input type="text" id="name" defaultValue={record.name} onChange={e => this.nameChanged(e.target.value)}/>
+                        <input type="text" id="name" name="name" value={this.state.name} onChange={ev => this.handleInputChange(ev)}/>
                     </div>
 
                     <div className="form-section">
                         <label htmlFor="vintner">Vintner</label>
-                        <input type="text" id="vintner" defaultValue={record.vintner} onChange={e => this.vintnerChanged(e.target.value)} />
+                        <input type="text" id="vintner" name="vintner" value={this.state.vintner} onChange={ev => this.handleInputChange(ev)} />
                     </div>
 
                     <div className="form-section">
                         <label htmlFor="varietal">Varietal</label>
-                        <select name="varietal" id="varietal" defaultValue={record.varietal} onChange={e => this.varietalChanged(e.target.value)}>
+                        <select name="varietal" id="varietal" value={this.state.varietal} onChange={ev => this.handleInputChange(ev)}>
                             <option value="">--Please choose an option--</option>
                             <option value="Chardonnay">Chardonnay</option>
                             <option value="Sauvignon Blanc">Sauvignon Blanc</option>
@@ -191,12 +140,12 @@ class EditEntry extends React.Component {
 
                     <div className="form-section">
                         <label htmlFor="year">Year</label>
-                        <input type="text" id="year" defaultValue={record.year} onChange={e => this.yearChanged(e.target.value)}/>
+                        <input type="text" id="year" name="year" value={this.state.year} onChange={ev => this.handleInputChange(ev)}/>
                     </div>
 
                     <div className="form-section">
                         <label htmlFor="region">Region</label>
-                        <select name="region" id="region" defaultValue={record.region} onChange={e => this.regionChanged(e.target.value)}>
+                        <select name="region" id="region" value={this.state.region} onChange={ev => this.handleInputChange(ev)}>
                             <option value="">--Please choose an option--</option>
                         
                             <optgroup label="South America">
@@ -262,13 +211,12 @@ class EditEntry extends React.Component {
                     </div>
 
                     <div className="form-section textarea">
-                        <label htmlFor="notes">Tasting Notes</label>
-                        <textarea name="notes" id="notes" defaultValue={record.tasting_notes} onChange={e => this.notesChanged(e.target.value)} cols="30" rows="10"></textarea>
+                        <label htmlFor="tasting_notes">Tasting Notes</label>
+                        <textarea name="tasting_notes" id="tasting_notes" value={this.state.tasting_notes} onChange={ev => this.handleInputChange(ev)} cols="30" rows="10"></textarea>
                     </div>
                     <div className="form-section">
                         <label htmlFor='rating'>Rating</label>
-                        <input type='number' name='rating' id='rating' placeholder='3' defaultValue={record.rating} onChange={e => this.ratingChanged(e.target.value)}min='1' max='5'
-                            required />
+                        <input type='number' name='rating' id='rating' placeholder='3' value={this.state.rating} onChange={ev => this.handleInputChange(ev)} min='1' max='5' />
                     </div>
                     <div className="form-section">
                        

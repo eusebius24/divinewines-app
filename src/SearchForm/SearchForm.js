@@ -2,16 +2,114 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import '../App/App.css';
+import DivineWinesContext from '../context/DivineWinesContext';
 
 class SearchForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            vintner: '',
+            varietal: '',
+            year: '',
+            region: '',
+            tasting_notes: '',
+            rating: ''
+        }
+    }
+    static contextType = DivineWinesContext;
+
     handleGoBack() {
         const history = createBrowserHistory();
-        history.push('/home');
+        history.goBack();
     }
     componentDidMount() {
         window.scrollTo(0, 0);
+        this.setState({
+            records: this.context.records
+        })
+        
     }
+
+    handleInputChange = (ev) => {
+        this.setState({
+            [ev.target.name]: ev.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("You clicked submit!");
+        const { name, vintner, varietal, year, region, tasting_notes, rating } = this.state;
+        console.log("name: ", name);
+        const searchResults = this.context.records;
+
+        let newResults = [];
+
+        for(let i=0; i<searchResults.length; i++) {
+            if (searchResults[i].name.toLowerCase().includes(name.toLowerCase())) {
+                newResults.push(searchResults[i]);
+            }
+        }
+        console.log('newResults: ', newResults);
+
+        let newResults2 =[];
+        for(let i=0; i<newResults.length; i++) {
+            if(newResults[i].vintner.toLowerCase().includes(vintner.toLowerCase())) {
+                newResults2.push(newResults[i]);
+            }     
+        }
+        console.log('newResults2: ', newResults2);
+
+        let newResults3 = [];
+        for(let i=0; i<newResults2.length; i++) {
+            if(newResults2[i].varietal.toLowerCase().includes(varietal.toLowerCase())) {
+                newResults3.push(newResults2[i]);
+            }
+        }
+        console.log('newResults3: ', newResults3);
+
+        let newResults4 = [];
+        for(let i=0; i<newResults3.length; i++) {
+            if(parseInt(newResults3[i].year) === parseInt(year) || year === '') {
+                newResults4.push(newResults3[i]);
+            }
+        }
+        console.log('newResults4: ', newResults4);
+
+        let newResults5 = [];
+        for(let i=0; i<newResults4.length; i++) {
+            if(newResults4[i].region.toLowerCase().includes(region.toLowerCase())) {
+                newResults5.push(newResults4[i]);
+            }
+        }
+        console.log('newResults5: ', newResults5);
+
+        let newResults6 = [];
+        for (let i=0; i<newResults5.length; i++) {
+            if(newResults5[i].tasting_notes.toLowerCase().includes(tasting_notes.toLowerCase())) {
+                newResults6.push(newResults5[i]);
+            }
+        }
+        console.log('newResults6: ', newResults6);
+
+        let newResults7 = [];
+        for (let i=0; i<newResults6.length; i++) {
+            if(parseInt(newResults6[i].rating) === parseInt(rating) || rating === '') {
+                newResults7.push(newResults6[i]);
+            }
+        }
+        console.log('rating: ', rating)
+        console.log('newResults7: ', newResults7);
+
+        this.props.history.push({
+            pathname: '/search-results',
+            state: { results: newResults7 }
+        })
+    }
+
     render() {
+        console.log('records: ', this.context.records)
         return (
             <main role="main">
             <header role="banner">
@@ -20,20 +118,20 @@ class SearchForm extends React.Component {
     
             <section className="form-container">
                 <p className="directions">Enter as few or as many details as you like.</p>
-                <form id="signup-form">
+                <form id="signup-form" onSubmit={this.handleSubmit}>
                     <div className="form-section">
-                        <label for="name">Wine Name</label>
-                        <input type="text" id="name" placeholder="Name of wine" />
+                        <label htmlFor="name">Wine Name</label>
+                        <input type="text" name="name" id="name" placeholder="Name of wine" onChange={ev => this.handleInputChange(ev)} />
                     </div>
 
                     <div className="form-section">
-                        <label for="vintner">Vintner</label>
-                        <input type="text" id="vintner" placeholder="Vintner" />
+                        <label htmlFor="vintner">Vintner</label>
+                        <input type="text" name="vintner" id="vintner" placeholder="Vintner" onChange={ev => this.handleInputChange(ev)} />
                     </div>
     
                     <div className="form-section">
-                        <label for="varietal">Varietal</label>
-                        <select name="varietal" id="varietal">
+                        <label htmlFor="varietal">Varietal</label>
+                        <select name="varietal" id="varietal" onChange={ev => this.handleInputChange(ev)}>
                             <option value="">--Please choose an option--</option>
                             <option value="Chardonnay">Chardonnay</option>
                             <option value="Sauvignon Blanc">Sauvignon Blanc</option>
@@ -50,13 +148,13 @@ class SearchForm extends React.Component {
                     </div>
 
                     <div className="form-section">
-                        <label for="year">Year</label>
-                        <input type="text" id="year" placeholder="Year" />
+                        <label htmlFor="year">Year</label>
+                        <input type="text" name="year" id="year" placeholder="Year" onChange={ev => this.handleInputChange(ev)} />
                     </div>
     
                     <div className="form-section">
-                        <label for="region">Region</label>
-                        <select name="region" id="region">
+                        <label htmlFor="region">Region</label>
+                        <select name="region" id="region" onChange={ev => this.handleInputChange(ev)}>
                             <option value="">--Please choose an option--</option>
                         
                             <optgroup label="South America">
@@ -122,17 +220,17 @@ class SearchForm extends React.Component {
                     </div>
     
                     <div className="form-section textarea">
-                        <label for="notes">Tasting Notes</label>
-                        <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+                        <label htmlFor="tasting_notes">Tasting Notes</label>
+                        <textarea name="tasting_notes" id="tasting_notes" cols="30" rows="10" onChange={ev => this.handleInputChange(ev)}></textarea>
                     </div>
                     <div className="form-section">
                         <label htmlFor='rating'>Rating</label>
-                        <input type='number' name='rating' id='rating' min='1' max='5' />
+                        <input type='number' name='rating' id='rating' min='1' max='5' onChange={ev => this.handleInputChange(ev)} />
                     </div>
                     <div className="form-section">
-                        <Link to="/search-results">
-                            <button>Search</button>
-                        </Link>
+                        
+                            <button type="submit">Search</button>
+                        
                         <button onClick={this.handleGoBack}>Cancel</button>
                     </div>
                     

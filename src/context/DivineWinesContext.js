@@ -1,8 +1,10 @@
 import React from 'react';
 
 const DivineWinesContext = React.createContext({
+    records: [],
     getAllRecords: () => {},
-    updateRecord: () => {}
+    updateItemRequest: () => {},
+    deleteRecord: () => {}
 })
 
 export default DivineWinesContext;

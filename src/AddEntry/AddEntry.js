@@ -2,6 +2,8 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import '../App/App.css';
 import config from '../config';
+import NavBar from '../NavBar/NavBar';
+import DivineWinesContext from '../context/DivineWinesContext';
 
 class AddEntry extends React.Component {
     constructor(props) {
@@ -12,10 +14,13 @@ class AddEntry extends React.Component {
             varietal: '',
             year: 0,
             region: '',
-            notes: '',
+            tasting_notes: '',
             rating: 1
         }
     }
+
+    static contextType = DivineWinesContext;
+
     componentDidMount() {
         window.scrollTo(0, 0);
     }
@@ -50,9 +55,9 @@ class AddEntry extends React.Component {
         })
     }
 
-    notesChanged(notes) {
+    tastingNotesChanged(tasting_notes) {
         this.setState({
-            notes
+            tasting_notes
         })
     }
 
@@ -65,9 +70,9 @@ class AddEntry extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
     
-        const{ name, vintner, varietal, year, region, notes, rating } = this.state;
+        const{ name, vintner, varietal, year, region, tasting_notes, rating } = this.state;
         console.log('You clicked submit!');
-        const record = { name, vintner, varietal, year, region, notes, rating };
+        const record = { name, vintner, varietal, year, region, tasting_notes, rating };
         const options = {
             method: 'POST',
             body: JSON.stringify(record),
@@ -120,6 +125,7 @@ class AddEntry extends React.Component {
     render() {
         return(
             <main role="main">
+            <NavBar records={this.context.records} />
         <header role="banner">
             <h1>Add Journal Entry</h1>
         </header>
@@ -228,8 +234,8 @@ class AddEntry extends React.Component {
                 </div>
 
                 <div className="form-section textarea">
-                    <label htmlFor="notes">Tasting Notes</label>
-                    <textarea name="notes" id="notes" value={this.state.notes} onChange={e => this.notesChanged(e.target.value)} cols="30" rows="10"></textarea>
+                    <label htmlFor="tasting_notes">Tasting Notes</label>
+                    <textarea name="tasting_notes" id="tasting_notes" value={this.state.tasting_notes} onChange={e => this.tastingNotesChanged(e.target.value)} cols="30" rows="10"></textarea>
                 </div>
                 <div className="form-section rating">
                     <label htmlFor='rating'>Rating</label>

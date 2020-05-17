@@ -1,0 +1,22 @@
+.nav {
+    background-color: #498c66;
+}
+.nav {
+    padding-left: 30px;
+}
+.nav li a {
+    display: block;
+    height: 100%;
+    margin: 0;
+   
+    padding-bottom: 12px;
+}
+.nav li a:hover {
+    background-color: #ccd67c;
+}
+
+@media screen and (min-width: 600px) {
+    .nav li a {
+        padding: 14px;
+    }
+}

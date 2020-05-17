@@ -1,0 +1,53 @@
+
+header {
+    margin-top: 50px;
+    min-height: 200px;
+    background-image: url('../images/kym-ellis-aF1NPSnDQLw-unsplash.jpg')
+  }
+
+
+section {
+    min-height: 200px;
+    padding: 0% 10%;
+    background-color: #84a9d9;
+    
+  }
+  
+  section:nth-child(even) {
+    background-color: #b2bf4b;
+  }
+
+@media screen and (min-width: 600px) {
+    header {
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .section-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto;
+        margin-left: 15%;
+        align-items: center;
+    }
+
+    section {
+        width: 30%;
+        height: 30vh;
+        font-size: 14px;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    section h2 {
+        font-size: 1.1rem;
+    }
+
+    .signup-section {
+        margin: 0 auto;
+        margin-top: 5px;
+        padding-top: 10px;
+        background-color: #f2dea0;
+    }
+}
