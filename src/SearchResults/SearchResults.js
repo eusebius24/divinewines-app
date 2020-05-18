@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App/App.css';
+import './SearchResults.css';
 import IndivRecord from '../IndivRecord/IndivRecord';
 
 class SearchResults extends React.Component {
@@ -23,10 +24,10 @@ class SearchResults extends React.Component {
                     <h1>Search Results</h1>
                 </header>
         
-                <section>
+                <section className="results-list">
                 {(!results) ? "loading..." :
                     resultsList}
-                        <div className="form-section">
+                        <div className="form-section bottom-buttons">
                             <Link to="/search-form">
                                 <button>Search Again</button>
                             </Link>

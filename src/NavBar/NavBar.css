@@ -1,5 +1,6 @@
 .nav {
     background-color: #498c66;
+    z-index: 99999;
 }
 .nav {
     padding-left: 30px;

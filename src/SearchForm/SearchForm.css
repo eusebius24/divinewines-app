@@ -1,0 +1,22 @@
+section.form-container, .directions {
+     background-color: #f2dea0;
+     font-style: italic;
+     font-size: 12px;
+}
+
+.bottom-buttons {
+    margin-left: -10px;
+}
+
+@media screen and (min-width: 600px) {
+    section.form-container {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    #name {
+        margin-left: 5px;
+    }
+
+
+}

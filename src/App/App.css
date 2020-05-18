@@ -147,9 +147,7 @@ button:hover {
  
 }
 
-.search-result ul {
-  margin-left: -30px;
-}
+
 
 .landing-section {
   display: flex;
@@ -183,9 +181,7 @@ button:hover {
 
   }
 
-  header {
-    
-  }
+ 
 }
 
 @media screen and (min-width: 800px) {

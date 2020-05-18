@@ -58,7 +58,7 @@ static contextType = DivineWinesContext;
                 {(!this.state.records) ? "loading..." :
                 this.makeRecordsList(this.state.records)}
         
-        <div className="form-section">
+        <div className="bottom-buttons">
             <Link to="/add-entry">
                 <button>Add Journal Entry</button>
             </Link>

@@ -43,13 +43,13 @@ class IndivRecord extends React.Component {
         return(
             <div className="search-result">
             <h3>{this.props.record.name}</h3>
-            <ul>
-                <li><span className="result-heading">Year: </span>{this.props.record.year}</li>
-                <li><span className="result-heading">Vintner: </span>{this.props.record.vintner}</li>
-                <li><span className="result-heading">Region: </span>{this.props.record.region}</li>
+            <ul className="result-list">
+                <li><span className="result-heading">Year:</span>{this.props.record.year}</li>
+                <li><span className="result-heading">Vintner:</span>{this.props.record.vintner}</li>
+                <li><span className="result-heading">Region:</span>{this.props.record.region}</li>
                 <li><span className="result-heading">Varietal: </span>{this.props.record.varietal}</li>
-                <li><span className="result-heading">Tasting Notes: </span>{this.props.record.tasting_notes}</li>
-                <li><span className="result-heading">Rating: </span>{this.props.record.rating} stars</li>
+                <li><span className="result-heading">Notes:</span>{this.props.record.tasting_notes}</li>
+                <li><span className="result-heading">Rating:</span>{this.props.record.rating} stars</li>
             </ul>
             <div className="form-section buttons">
                 <Link to={{pathname: `/edit-entry`, state: {record: this.props.record}}}>
