@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import '../App/App.css';
 import './SearchResults.css';
 import IndivRecord from '../IndivRecord/IndivRecord';
+import Footer from '../Footer/Footer.js';
 
 class SearchResults extends React.Component {
-    componentDidMount() {
-        window.scrollTo(0, 0);
-    }
+    
     render() {
         const { results } = this.props.location.state;
         if(!results) {
@@ -35,9 +34,10 @@ class SearchResults extends React.Component {
                                 <button>Home Page</button>
                             </Link> 
                         </div>
-                       
+                        <Footer />
                     
                 </section>
+               
             </main>
         
         

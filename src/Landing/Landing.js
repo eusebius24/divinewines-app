@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import '../App/App.css';
 import './Landing.css';
+import Footer from '../Footer/Footer.js';
+
 
 class Landing extends React.Component {
 
     render() {
         return (
+            <BrowserRouter>
             <main className="container">
-                 <header role="banner">
+                 <header role="banner" className={this.props.backgroundClass}>
             <h1>Divine Wines</h1>
            
         </header>
@@ -38,7 +41,9 @@ class Landing extends React.Component {
                 </Link>
                 <p><small>Note: The authentication feature will be added later.</small></p>
         </div>
+        <Footer />
     </main>
+    </BrowserRouter>
         );
     }
 }

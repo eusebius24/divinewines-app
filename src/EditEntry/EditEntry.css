@@ -4,11 +4,9 @@ header {
     overflow: hidden;
     margin-top: 50px;
     min-height: 200px;
- 
 }
 
 header:before {
-
     content: ' ';
     display: block;
     position: absolute;
@@ -29,33 +27,6 @@ h1 {
     z-index: 999;
 }
 
-
-.flex-outer {
-    width: 150%;
-    margin: 0 auto;
-    margin-left: -50px;
-    font-size: 16px;
-    background-color: #b2bf4b;
-}
-
-.flex-outer li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.flex-outer > li > label {
-    flex: 1 0 120px;
-    max-width: 220px;
-    /* margin-right: 40px; */
-    
-}
-
-.flex-outer > li > label + * {
-    flex: 1 0 220px;
-    justify-content: flex-end;
-}
-
 label {
     font-weight: bold;
     margin-right: 10px;
@@ -64,23 +35,25 @@ label {
 }
 
 
-/* textarea {
-    width: 200px;
-} */
-
 .bottom-buttons {
     display: flex;
     align-items: center;
-    
 }
 
 
 @media screen and (min-width: 600px) {
+
+    header:before {
+        background-image: url('../images/DivineWinesdesktopbanner.png')
+    }
+
     section {
         width: 60%;
-        margin: 0 auto;
-       
-       
+        margin: 0 auto; 
+    }
+
+    .edit-form {
+        background-color: #498c66 !important;
     }
 
     #edit-form {
@@ -94,22 +67,27 @@ label {
         margin-left: -15px;
     }
 
-    .flex-outer > label + * {
-        width: 100%;
-        margin: 0 auto;
-        margin-left: 30%;
-    }
     .bottom-buttons {
         display: flex;
         width: 100%;
         justify-content: center;
-        margin-left: -10%;
+        
     }
 
     input {
         max-width: 400px;
     }
+
     textarea {
         max-width: 400px;
+    }
+
+    .edit-form {
+        background-color: #498c66 !important;
+    }
+
+    .bottom-form-buttons {
+        display: flex;
+        justify-content: center;
     }
 }

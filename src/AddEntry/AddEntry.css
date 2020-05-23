@@ -33,29 +33,22 @@ form {
     margin-top: -20px;
 }
 
-.flex-outer {
-    width: 100%;
-    margin: 0 auto;
-   
-    font-size: 16px;
-    background-color: #b2bf4b;
-}
-
-.flex-outer li {
+.row {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-content: left;
 }
 
-.flex-outer > li > label {
-    flex: 1 0 220px;
-    max-width: 320px;
-    margin-right: 40px;
+.row-cell {
+    flex: 1;
+}
+
+
+.error {
+    color: #bf452a;
+    text-align: center;
+    margin-left: -200px;
+    font-weight: bold;
     
-}
-
-.flex-outer > li > label + * {
-    flex: 1 0 320px;
 }
 
 label {
@@ -64,38 +57,53 @@ label {
     text-transform: uppercase;
     color: #fff;
 }
+
+input {
+    padding: 5px;
+}
 textarea {
     max-width: 150px;
     
 }
 
-/* .bottom-buttons {
-    margin-left: 20%;
-} */
+.bottom-form-buttons button {
+    background-color: #f2dea0;
+    margin-right: 5px;
+    color: #000;
+    width: 100px;
+}
+
+.bottom-form-buttons button:hover {
+    cursor: pointer;
+    background-color: #b2bf4b;
+}
+
 
 @media screen and (min-width: 600px) {
     section {
-        width: 60%;
+        width: 90%;
         margin: 0 auto;
         margin-left: 20%;
-        padding-left: 15%;
+        padding-left: 10%;
+        height: 350vh;
     }
 
     form {
         margin-left: -140px;
         margin-top: -25px;
         width: 100%;
+        font-size: 18px;
+        padding-left: 10%;
     }
 
-    .flex-outer {
-        margin-left: -250px;
+    .error {
+        font-size: 24px;
     }
 
-    .flex-outer > label + * {
-        width: 100%;
-        margin: 0 auto;
-        margin-left: 30%;
+    .name-label {
+        margin-left: 25px;
     }
+   
     .bottom-buttons {
         display: flex;
         width: 100%;
@@ -105,5 +113,13 @@ textarea {
 
     textarea {
         max-width: 450px;
+    }
+
+   
+}
+
+@media screen and (min-width: 700px) {
+    .name-label {
+        margin-left: 0px;
     }
 }

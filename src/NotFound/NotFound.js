@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserHistory } from 'history';
+import './NotFound.css';
 
 class NotFound extends React.Component {
 

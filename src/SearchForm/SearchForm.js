@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import '../App/App.css';
 import './SearchForm.css';
 import DivineWinesContext from '../context/DivineWinesContext';
+import Footer from '../Footer/Footer.js';
 
 class SearchForm extends React.Component {
     constructor(props) {
@@ -24,7 +25,6 @@ class SearchForm extends React.Component {
         history.goBack();
     }
     componentDidMount() {
-        window.scrollTo(0, 0);
         this.setState({
             records: this.context.records
         })
@@ -119,136 +119,161 @@ class SearchForm extends React.Component {
             <section className="form-container">
                 <p className="directions">Enter as few or as many details as you like.</p>
                 <form id="signup-form" onSubmit={this.handleSubmit}>
-                    <ul className="flex-outer">
-                        <li>
-                            <div className="form-section">
-                            <label htmlFor="name">Wine Name</label>
-                            <input type="text" name="name" id="name" placeholder="Name of wine" onChange={ev => this.handleInputChange(ev)} />
+                            <div className="form-section row">
+                                <div className="labels row-cell">
+                                <label htmlFor="name">Wine Name</label>
+                                </div>
+                                <div className="inputs row-cell">
+                                    <input type="text" name="name" id="name" placeholder="Name of wine" onChange={ev => this.handleInputChange(ev)} />
+                                </div>
+                           
                             </div>
-                        </li>
-                        <li>
-                            <div className="form-section">
-                            <label htmlFor="vintner">Vintner</label>
-                            <input type="text" name="vintner" id="vintner" placeholder="Vintner" onChange={ev => this.handleInputChange(ev)} />
+                       
+                            <div className="form-section row">
+                                <div className="labels row-cell">
+                                    <label htmlFor="vintner">Vintner</label>
+                                </div>
+                                <div className="inputs row-cell">
+                                    <input type="text" name="vintner" id="vintner" placeholder="Vintner" onChange={ev => this.handleInputChange(ev)} />
+                                </div>
+                            
                             </div>
-                        </li>
-                        <li>
-                            <div className="form-section">
-                            <label htmlFor="varietal">Varietal</label>
-                            <select name="varietal" id="varietal" onChange={ev => this.handleInputChange(ev)}>
-                                <option value="">--Please choose an option--</option>
-                                <option value="Chardonnay">Chardonnay</option>
-                                <option value="Sauvignon Blanc">Sauvignon Blanc</option>
-                                <option value="Pinot Grigio">Pinot Grigio</option>
-                                <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
-                                <option value="Merlot">Merlot</option>
-                                <option value="Pinot Noir">Pinot Noir</option>
-                                <option value="Shiraz">Shiraz</option>
-                                <option value="Ros&eacute;">Ros&eacute;</option>
-                                <option value="Riesling">Riesling</option>
-                                <option value="Valpolicella">Valpolicella</option>
-                                <option value="Carmen&egrave;re">Carmen&egrave;re</option>
-                            </select>
+                        
+                            <div className="form-section row">
+                                <div className="labels row-cell">
+                                    <label htmlFor="varietal">Varietal</label>
+                                </div>
+                                <div className="inputs row-cell"></div>
+                                    <select name="varietal" id="varietal" onChange={ev => this.handleInputChange(ev)}>
+                                        <option value="">--Please choose an option--</option>
+                                        <option value="Chardonnay">Chardonnay</option>
+                                        <option value="Sauvignon Blanc">Sauvignon Blanc</option>
+                                        <option value="Pinot Grigio">Pinot Grigio</option>
+                                        <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
+                                        <option value="Merlot">Merlot</option>
+                                        <option value="Pinot Noir">Pinot Noir</option>
+                                        <option value="Shiraz">Shiraz</option>
+                                        <option value="Ros&eacute;">Ros&eacute;</option>
+                                        <option value="Riesling">Riesling</option>
+                                        <option value="Valpolicella">Valpolicella</option>
+                                        <option value="Carmen&egrave;re">Carmen&egrave;re</option>
+                                    </select>
+                                </div>
+                       
+                            <div className="form-section row">
+                                <div className="labels row-cell">
+                                    <label htmlFor="year">Year</label>
+                                </div>
+                                <div className="inputs row-cell">
+                                    <input type="text" name="year" id="year" placeholder="Year" onChange={ev => this.handleInputChange(ev)} />
+                                </div>
+                            
                             </div>
-                        </li>
-                        <li>
-                            <div className="form-section">
-                            <label htmlFor="year">Year</label>
-                            <input type="text" name="year" id="year" placeholder="Year" onChange={ev => this.handleInputChange(ev)} />
+                        
+                            <div className="form-section row">
+                                <div className="labels row-cell">
+                                    <label htmlFor="region">Region</label>
+                                </div> 
+                               <div className="inputs row-cell">
+                                    <select name="region" id="region" onChange={ev => this.handleInputChange(ev)}>
+                                            <option value="">--Please choose an option--</option>
+                                        
+                                            <optgroup label="South America">
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Chile">Chile</option>
+                                            </optgroup>
+                                            
+                                            <optgroup label="France">
+                                                <option value="Alsace">Alsace</option>
+                                                <option value="Burgundy">Burgundy</option>
+                                                <option value="Bordeaux">Bordeaux</option>
+                                                <option value="Champagne">Champagne</option>
+                                                <option value="Loire">Loire</option>
+                                                <option value="Provence">Provence</option>
+                                                <option value="Rhone">Rhone</option>
+                                            </optgroup>
+                                            <option value="Germany">Germany</option>
+                                            <option value="Greece">Greece</option>
+                                            <option value="Hungary">Hungary</option>
+                                            <optgroup label="Italy">
+                                                <option value="Apulia">Apulia</option>
+                                                <option value="Apulia">Apulia</option>
+                                                <option value="Calabria">Calabria</option>
+                                                <option value="Emilia-Romagna">Emilia-Romagna</option>
+                                                <option value="Liguria">Liguria</option>
+                                                <option value="Lombardy">Lombardy</option>
+                                                <option value="Marche">Marche</option>
+                                                <option value="Piedmont">Piedmont</option>
+                                                <option value="Sardinia">Sardinia</option>
+                                                <option value="Sicily">Sicily</option>
+                                                <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                                                <option value="Tuscany">Tuscany</option>
+                                                <option value="Umbria">Umbria</option>
+                                                <option value="Veneto">Veneto</option>
+                                            </optgroup>
+                                            <option value="Poland">Poland</option>
+                                            <option value="Portugal">Portugal</option>
+                                            <option value="Spain">Spain</option>
+                                        
+                                            <optgroup label="Canada">
+                                                <option value="Niagara">Niagara</option>
+                                                <option value="Okanagan">Okanagan</option>
+                                                <option value="Prince Edward County">Prince Edward County</option>
+                                            </optgroup>
+                                            <optgroup label="United States">
+                                                <option value="California">California</option>
+                                                <option value="New York">New York</option>
+                                                <option value="Oregon">Oregon</option>
+                                            </optgroup>
+                                            <option value="California">California</option>
+                                        
+                                            <optgroup label="Australia">
+                                                <option value="New South Wales">New South Wales</option>
+                                                <option value="Queensland">Queensland</option>
+                                                <option value="South Australia">South Australia</option>
+                                                <option value="Tasmania">Tasmania</option>
+                                                <option value="Victoria">Victorias</option>
+                                                <option value="Western Australia">Western Australia</option>
+                                            </optgroup>
+                                            <option value="New Zealand">New Zealand</option>
+                                            <option value="South Africa">South Africa</option>
+                                    </select>
+                               </div>
+                               
                             </div>
-                        </li>
-                        <li>
-                            <div className="form-section">
-                                <label htmlFor="region">Region</label>
-                                <select name="region" id="region" onChange={ev => this.handleInputChange(ev)}>
-                                    <option value="">--Please choose an option--</option>
-                                
-                                    <optgroup label="South America">
-                                        <option value="Argentina">Argentina</option>
-                                        <option value="Chile">Chile</option>
-                                    </optgroup>
-                                    
-                                    <optgroup label="France">
-                                        <option value="Alsace">Alsace</option>
-                                        <option value="Burgundy">Burgundy</option>
-                                        <option value="Bordeaux">Bordeaux</option>
-                                        <option value="Champagne">Champagne</option>
-                                        <option value="Loire">Loire</option>
-                                        <option value="Provence">Provence</option>
-                                        <option value="Rhone">Rhone</option>
-                                    </optgroup>
-                                    <option value="Germany">Germany</option>
-                                    <option value="Greece">Greece</option>
-                                    <option value="Hungary">Hungary</option>
-                                    <optgroup label="Italy">
-                                        <option value="Apulia">Apulia</option>
-                                        <option value="Apulia">Apulia</option>
-                                        <option value="Calabria">Calabria</option>
-                                        <option value="Emilia-Romagna">Emilia-Romagna</option>
-                                        <option value="Liguria">Liguria</option>
-                                        <option value="Lombardy">Lombardy</option>
-                                        <option value="Marche">Marche</option>
-                                        <option value="Piedmont">Piedmont</option>
-                                        <option value="Sardinia">Sardinia</option>
-                                        <option value="Sicily">Sicily</option>
-                                        <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
-                                        <option value="Tuscany">Tuscany</option>
-                                        <option value="Umbria">Umbria</option>
-                                        <option value="Veneto">Veneto</option>
-                                    </optgroup>
-                                    <option value="Poland">Poland</option>
-                                    <option value="Portugal">Portugal</option>
-                                    <option value="Spain">Spain</option>
-                                
-                                    <optgroup label="Canada">
-                                        <option value="Niagara">Niagara</option>
-                                        <option value="Okanagan">Okanagan</option>
-                                        <option value="Prince Edward County">Prince Edward County</option>
-                                    </optgroup>
-                                    <optgroup label="United States">
-                                        <option value="California">California</option>
-                                        <option value="New York">New York</option>
-                                        <option value="Oregon">Oregon</option>
-                                    </optgroup>
-                                    <option value="California">California</option>
-                                
-                                    <optgroup label="Australia">
-                                        <option value="New South Wales">New South Wales</option>
-                                        <option value="Queensland">Queensland</option>
-                                        <option value="South Australia">South Australia</option>
-                                        <option value="Tasmania">Tasmania</option>
-                                        <option value="Victoria">Victorias</option>
-                                        <option value="Western Australia">Western Australia</option>
-                                    </optgroup>
-                                    <option value="New Zealand">New Zealand</option>
-                                    <option value="South Africa">South Africa</option>
-                            </select>
+                   
+                        <div className="form-section row textarea">
+                            <div className="labels row-cell">
+                                <label htmlFor="tasting_notes">Tasting Notes</label>
                             </div>
-                    </li>
-                    <li>
-                        <div className="form-section textarea">
-                            <label htmlFor="tasting_notes">Tasting Notes</label>
-                            <textarea name="tasting_notes" id="tasting_notes" cols="30" rows="10" onChange={ev => this.handleInputChange(ev)}></textarea>
+                            <div className="inputs row-cell">
+                                <textarea name="tasting_notes" id="tasting_notes" cols="30" rows="10" onChange={ev => this.handleInputChange(ev)}></textarea>
+                            </div>
+                            
                         </div>
-                    </li>
-                    <li>
-                        <div className="form-section">
-                            <label htmlFor='rating'>Rating</label>
-                            <input type='number' name='rating' id='rating' min='1' max='5' onChange={ev => this.handleInputChange(ev)} />
+                    
+                        <div className="form-section row">
+                            <div className="labels row-cell">
+                                 <label htmlFor='rating'>Rating (1-5)</label>
+                            </div>
+                            <div className="inputs">
+                                <input type='number' name='rating' id='rating' min='1' max='5' onChange={ev => this.handleInputChange(ev)} />
+                            </div>
+                           
                         </div>
-                    </li>
-                    <li>
-                        <div className="form-section bottom-buttons">
+                    
+                        <div className="form-section bottom-buttons bottom-form-buttons">
                             
                             <button type="submit">Search</button>
                         
                         <button onClick={this.handleGoBack}>Cancel</button>
                     </div>
-                    </li>
-                   
-                       
-                </ul>                  
+                    <div className="form-section search-footer">
+                     <Footer />     
+                    </div>
+                     
                </form>
+              
             </section>
         </main>
         );

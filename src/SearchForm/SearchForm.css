@@ -1,7 +1,17 @@
 section.form-container, .directions {
-     background-color: #f2dea0;
+    background-color: #498c66;
      font-style: italic;
-     font-size: 12px;
+     font-size: 16px;
+     color: #fff;
+
+}
+
+.directions {
+    margin: 0 auto;
+}
+
+#rating {
+    width: 200px;
 }
 
 .bottom-buttons {
@@ -12,11 +22,20 @@ section.form-container, .directions {
     section.form-container {
         width: 70%;
         margin: 0 auto;
+        margin-left: 13%;
+        background-color: #498c66;
+    }
+
+    .directions {
+        margin-left: -60px;
     }
 
     #name {
         margin-left: 5px;
     }
 
+   .search-footer {
+       margin-left: -100px;
+   }
 
 }

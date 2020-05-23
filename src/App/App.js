@@ -26,8 +26,6 @@ class App extends React.Component {
     this.deleteRecord = this.deleteRecord.bind(this)
   }
   
-  
-
   addRecord(record) {
     this.setState({
       records: [...this.state.records, record]
@@ -65,7 +63,6 @@ class App extends React.Component {
 }
 
 updateItemRequest(updatedRecord, recordId)  {
-  const history = createBrowserHistory();
   console.log('updatedRecord: ', updatedRecord)
   fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
       method: 'PATCH',
@@ -75,26 +72,14 @@ updateItemRequest(updatedRecord, recordId)  {
       }
   })
   .then(res => console.log(res)
- 
-      // if (!res.ok) {        
-      //   return res.json().then(error => {
-      //       throw error
-      //   })
-      // }
-      // console.log(res);
-  //   return res.json();
   )
- 
   .then(
       this.getAllRecords()
   )
-  
-      
   .catch(error => {
       // this.setState({ error });
       console.log(error);
   })
-  
 }   
 
 componentDidMount() {
@@ -116,15 +101,16 @@ componentDidMount() {
           <BrowserRouter>
             <Switch>
               <Route exact path = '/'
-              component={Landing} />
-              <Route path = '/home' render={(props) => <Home records={this.state.records} {...props} />}  />
-              <Route path = '/add-entry' render={(props) => <AddEntry addRecord={() => this.addRecord} getAllRecords={() => this.getAllRecords} {...props} /> } />
+               render={(props) => <Landing backgroundClass={"daniel"}{...props} />} />
+              <Route path = '/home' render={(props) => <Home records={this.state.records} backgroundClass={"clay"}{...props} />}  />
+              <Route path = '/add-entry' render={(props) => <AddEntry backgroundClass={"ales"} addRecord={() => this.addRecord} getAllRecords={() => this.getAllRecords} {...props} /> } />
               <Route path="/edit-entry" component={EditEntry} />
               <Route path = '/search-form' component={SearchForm} />
               <Route path = "/search-results" component={SearchResults} />
               <Route component={NotFound} />
             </Switch>
            </BrowserRouter>
+           
       </main>
     </DivineWinesContext.Provider>
        

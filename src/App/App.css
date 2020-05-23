@@ -12,11 +12,9 @@ body {
   background-color: #f2dea0
 }
 
-.nav,
-footer {
+.nav {
   padding: 5%;
   padding-bottom: 8%;
-  
 }
 
 .nav {
@@ -34,15 +32,11 @@ footer {
 .nav ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    
-    
-   
+    justify-content: space-evenly; 
 }
+
 .nav li {
-    
     padding-right: 10px;
- 
     font-size: 0.8rem;      
     text-decoration: none;
     color: #fff;
@@ -57,9 +51,9 @@ footer {
 .nav a:visited {
   color: #fff;
 }
+
 main {
   padding: 2% 2%;
-  
 }
 
 header {
@@ -73,15 +67,14 @@ h1, h2 {
   color: #bf452a;
 }
 
-
 h3  {
   margin-left: 20px;
 }
 
-
 ul {
     list-style-type: none;
 }
+
 .directions {
     width: 60%;
     margin: 0 auto;
@@ -90,22 +83,21 @@ ul {
 
 form {
   text-align: left;
-  padding-right: 20px;
-  padding-top: 20px;
+  padding: 20px;
+  
 }
 
 .form-container {
   padding-top: 20px;
 }
 
-
 .form-section {
     padding: 15px;
-    /* margin-left: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 input, textarea {
   width: 100%;
   max-width: 500px;
@@ -144,10 +136,7 @@ button:hover {
 .search-result {
   padding: 10px;
   text-align: center;
- 
 }
-
-
 
 .landing-section {
   display: flex;
@@ -180,8 +169,6 @@ button:hover {
     justify-content: left;
 
   }
-
- 
 }
 
 @media screen and (min-width: 800px) {

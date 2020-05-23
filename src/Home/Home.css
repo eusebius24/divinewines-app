@@ -4,11 +4,9 @@ header {
     overflow: hidden;
     margin-top: 50px;
     min-height: 200px;
-    opacity: 1;
 }
 
 header:before {
-
     content: ' ';
     display: block;
     position: absolute;
@@ -18,14 +16,17 @@ header:before {
     height: 100%;
     z-index: 1;
     background-color: rgba(0,0,0,0.25);
-    background-image: url('../images/clay-banks-TL60StXgi10-unsplash.jpg');
-    background-repeat: no-repeat;
+    opacity: 0.4;
     background-position: 50% 0;
     -ms-background-size: cover;
     -o-background-size: cover;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;
+}
+
+.clay {
+    background-image: url('../images/clay-banks-TL60StXgi10-unsplash.jpg');
 }
 
 h1 {
@@ -41,6 +42,7 @@ main {
 section {
     background-color: #498c66
 }
+
 section:nth-child(even) {
     background-color: #84a9d9
 }
@@ -51,7 +53,7 @@ section:nth-child(even) {
     background-color: #84a9d9;
     margin-top: 3px;
     margin-bottom: 2px;
-  }
+}
   
 .search-result:nth-child(even) {
 background-color: #b2bf4b;
@@ -66,17 +68,27 @@ button {
 .bottom-buttons {
     display: flex;
     width: 100%;
-    
     margin-top: 10px;
     align-items: center;
-
     justify-content: center;
 }
+
 .bottom-buttons button {
-    width: 120px;
+    width: 120px;   
+}
+
+footer {
+    font-size: 10px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
 }
 
 @media screen and (min-width: 600px) {
+
+    header:before, .clay {
+        background-image: url('../images/DivineWinesdesktopbanner.png')
+    }
 
     .landing-section {
        display: flex;
@@ -87,18 +99,26 @@ button {
         font-size: 1.2rem;
         padding-left: 0;
     }
+
     .results-list, section:nth-child(even) {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
         margin: 0 auto;
-        margin-left: -50px;
         background-color: #f2dea0
     }
 
     .search-result {
         width: 45%;
         margin-right: 5px;
+        background-color:  #b2bf4b;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        padding: 2%;
+    }
+
+    .result-list > li {
+        font-size: 18px;
     }
 
     .bottom-buttons {

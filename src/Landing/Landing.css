@@ -2,9 +2,17 @@
 header {
     margin-top: 50px;
     min-height: 200px;
-    background-image: url('../images/kym-ellis-aF1NPSnDQLw-unsplash.jpg')
+   
   }
 
+header:before {
+    background-image: none;
+}
+
+.daniel {
+    background-image: url('../images/daniel-salgado-MF2KORFe1OE-unsplash.jpg');
+    
+}
 
 section {
     min-height: 200px;
@@ -21,6 +29,15 @@ section {
     header {
         background-repeat: no-repeat;
         background-position: center;
+        
+    }
+
+    header:before {
+        background-image: url('../images/DivineWinesdesktopbanner.png')
+    }
+
+    .daniel {
+        background-image: none;
     }
 
     .section-container {
@@ -28,7 +45,7 @@ section {
         flex-wrap: wrap;
         width: 80%;
         margin: 0 auto;
-        margin-left: 15%;
+        margin-left: 18%;
         align-items: center;
     }
 
@@ -38,6 +55,10 @@ section {
         font-size: 14px;
         padding: 5px;
         margin-right: 5px;
+    }
+
+    .landing-section:nth-child(even) {
+        margin-left: -10% !important;
     }
 
     section h2 {
@@ -50,4 +71,5 @@ section {
         padding-top: 10px;
         background-color: #f2dea0;
     }
+
 }
