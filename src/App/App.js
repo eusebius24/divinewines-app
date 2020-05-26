@@ -63,7 +63,6 @@ class App extends React.Component {
 }
 
 updateItemRequest(updatedRecord, recordId)  {
-  console.log('updatedRecord: ', updatedRecord)
   fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
       method: 'PATCH',
       body: JSON.stringify(updatedRecord),
@@ -71,14 +70,12 @@ updateItemRequest(updatedRecord, recordId)  {
           'content-type': 'application/json',
       }
   })
-  .then(res => console.log(res)
-  )
   .then(
       this.getAllRecords()
   )
   .catch(error => {
-      // this.setState({ error });
-      console.log(error);
+      this.setState({ error });
+     
   })
 }   
 
@@ -87,7 +84,6 @@ componentDidMount() {
 }
 
   render() {
-    console.log("this.state.records: ", this.state.records)
     const contextValue = {
       records: this.state.records,
       getAllRecords: this.getAllRecords,

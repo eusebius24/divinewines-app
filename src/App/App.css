@@ -27,12 +27,15 @@ body {
   margin-top: -5px;
   height: 20px;
   justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid darkgrey;
 }
 
 .nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly; 
+    margin-left: -40px;
 }
 
 .nav li {
@@ -168,6 +171,10 @@ button:hover {
   .nav li {
     justify-content: left;
 
+  }
+
+  button {
+    font-size: 20px;
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import config from '../config';
 import '../App/App.css';
 import './IndivRecord.css';
@@ -13,11 +13,6 @@ class IndivRecord extends React.Component {
     static contextType = DivineWinesContext;
 
     deleteRecordRequest(recordId, callback) {
-       
-        console.log('You clicked delete!');
-       
-        console.log('recordId: ', recordId)
-        console.log(`${config.API_ENDPOINT}/records/${recordId}`);
         fetch(`${config.API_ENDPOINT}/records/${recordId}`, {
             method: 'DELETE'
         })
@@ -40,7 +35,6 @@ class IndivRecord extends React.Component {
     }
     
     render() {
-        console.log('this.props.record.id: ', this.props.record.id);
         return(
           
             <div className="search-result">

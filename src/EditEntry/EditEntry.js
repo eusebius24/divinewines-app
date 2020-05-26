@@ -37,7 +37,6 @@ class EditEntry extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { record } = this.props.location.state;
-        console.log('You clicked submit!');
         const updatedRecord = { 
             id: record.id,
             name: this.state.name,
@@ -84,7 +83,6 @@ class EditEntry extends React.Component {
                 tasting_notes: record.tasting_notes,
                 rating: record.rating
              })
-             console.log("this.state.tasting_notes:", this.state.tasting_notes);
          })
          .catch(err => {
             this.setState({

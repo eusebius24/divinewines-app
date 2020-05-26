@@ -110,11 +110,13 @@ footer {
 
     .search-result {
         width: 45%;
+        border-radius: 5px;
         margin-right: 5px;
         background-color:  #b2bf4b;
         font-size: 1.2rem;
         margin-bottom: 5px;
         padding: 2%;
+        box-shadow: 2px 2px;
     }
 
     .result-list > li {

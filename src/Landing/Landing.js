@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App/App.css';
 import './Landing.css';
 import Footer from '../Footer/Footer.js';
@@ -9,7 +9,7 @@ class Landing extends React.Component {
 
     render() {
         return (
-            <BrowserRouter>
+           
             <main className="container">
                  <header role="banner" className={this.props.backgroundClass}>
             <h1>Divine Wines</h1>
@@ -43,7 +43,7 @@ class Landing extends React.Component {
         </div>
         <Footer />
     </main>
-    </BrowserRouter>
+    
         );
     }
 }

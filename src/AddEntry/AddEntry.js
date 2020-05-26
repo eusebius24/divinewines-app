@@ -69,10 +69,8 @@ class AddEntry extends React.Component {
         e.preventDefault();
     
         const{ name, vintner, varietal, year, region, tasting_notes, rating } = this.state;
-        console.log('You clicked submit!');
         
         const record = { name, vintner, varietal, year, region, tasting_notes, rating };
-        console.log("record:", record);
         const options = {
             method: 'POST',
             body: JSON.stringify(record),
@@ -89,7 +87,6 @@ class AddEntry extends React.Component {
                 return res.json();
              })
              .then (data => {
-                 console.log(data);
                  this.setState({
                    
                         name: '',

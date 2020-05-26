@@ -39,9 +39,7 @@ class SearchForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("You clicked submit!");
         const { name, vintner, varietal, year, region, tasting_notes, rating } = this.state;
-        console.log("name: ", name);
         const searchResults = this.context.records;
 
         let newResults = [];
@@ -51,7 +49,6 @@ class SearchForm extends React.Component {
                 newResults.push(searchResults[i]);
             }
         }
-        console.log('newResults: ', newResults);
 
         let newResults2 =[];
         for(let i=0; i<newResults.length; i++) {
@@ -59,7 +56,6 @@ class SearchForm extends React.Component {
                 newResults2.push(newResults[i]);
             }     
         }
-        console.log('newResults2: ', newResults2);
 
         let newResults3 = [];
         for(let i=0; i<newResults2.length; i++) {
@@ -67,7 +63,6 @@ class SearchForm extends React.Component {
                 newResults3.push(newResults2[i]);
             }
         }
-        console.log('newResults3: ', newResults3);
 
         let newResults4 = [];
         for(let i=0; i<newResults3.length; i++) {
@@ -75,7 +70,6 @@ class SearchForm extends React.Component {
                 newResults4.push(newResults3[i]);
             }
         }
-        console.log('newResults4: ', newResults4);
 
         let newResults5 = [];
         for(let i=0; i<newResults4.length; i++) {
@@ -83,7 +77,6 @@ class SearchForm extends React.Component {
                 newResults5.push(newResults4[i]);
             }
         }
-        console.log('newResults5: ', newResults5);
 
         let newResults6 = [];
         for (let i=0; i<newResults5.length; i++) {
@@ -91,7 +84,6 @@ class SearchForm extends React.Component {
                 newResults6.push(newResults5[i]);
             }
         }
-        console.log('newResults6: ', newResults6);
 
         let newResults7 = [];
         for (let i=0; i<newResults6.length; i++) {
@@ -99,8 +91,6 @@ class SearchForm extends React.Component {
                 newResults7.push(newResults6[i]);
             }
         }
-        console.log('rating: ', rating)
-        console.log('newResults7: ', newResults7);
 
         this.props.history.push({
             pathname: '/search-results',
@@ -109,7 +99,6 @@ class SearchForm extends React.Component {
     }
 
     render() {
-        console.log('records: ', this.context.records)
         return (
             <main role="main">
             <header role="banner">
